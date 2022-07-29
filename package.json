@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "vue-tsc": "^0.39.2"
+  },
+  "dependencies": {
+    "vite": "^3.0.3"
+  }
+}
