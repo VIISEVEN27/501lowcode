@@ -10,7 +10,9 @@ interface RestaurantItem {
   zh: string
 }
 
-const searchText = ref("");
+const searchText = ref('');
+let state = ref('4');
+
 
 const restaurants = ref<RestaurantItem[]>([])
 const querySearch = (queryString: string, cb: any) => {
@@ -24,7 +26,7 @@ const createFilter = (queryString: string) => {
   return (restaurant: RestaurantItem) => {
     return (
       restaurant.name.toLowerCase().indexOf(queryString.toLowerCase()) !==-1 ||
-      restaurant.zh.toLowerCase().indexOf(queryString.toLowerCase()) !==-1
+      restaurant.zh.indexOf(queryString) !==-1
     )
       
   }
@@ -37,8 +39,15 @@ const loadAll = () => {
  )
 }
 
-const handleSelect = (item: RestaurantItem) => {
-  console.log(item)
+const handleSelect = (item:RestaurantItem)=>{
+  const arr = Object.values(componentInfo);
+  for (const values of arr) {
+    values.forEach(function(value){
+      if(value.name === item.name){
+        state.value = arr.indexOf(values)+'';
+      }
+    })
+  }
 }
 
 
@@ -57,16 +66,18 @@ onMounted(() => {
         :fetch-suggestions="querySearch"
         :trigger-on-focus="false"
         clearable
+        value-key="name"
         @select="handleSelect"
         :suffix-icon="Search"
       >
       <template #default="{ item }">
-      <div class="result">{{ item.name }},{{ item.zh }}</div>
+      <div class="name">{{ item.name }}</div>
+      <span class="zh"> {{ item.zh }}</span>
       </template>
       
       </el-autocomplete>
     
-    <el-tabs class="tabs">
+    <el-tabs class="tabs" v-model="state">
       <el-tab-pane v-for="(value, key) in componentInfo" :label="key">
         <el-scrollbar height="313px">
           <template v-for="item in value">
