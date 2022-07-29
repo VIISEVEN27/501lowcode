@@ -1,10 +1,17 @@
-import {createRouter, createWebHistory, RouteRecordRaw} from "vue-router"
+import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+import Home from "./views/index.vue";
 
-const routes: Array<RouteRecordRaw> = []
+const routes: Array<RouteRecordRaw> = [
+  {
+    path: "/",
+    name: "home",
+    component: Home,
+  },
+];
 
 const router = createRouter({
-    routes,
-    history: createWebHistory(),
-})
+  routes,
+  history: createWebHistory(),
+});
 
-export default router
+export default router;

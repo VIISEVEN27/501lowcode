@@ -1,0 +1,12 @@
+:root {
+  --base-border-color: #DCDFE6;
+  --dark-border-color: #D4D7DE;
+  --darker-border-color: #CDD0D6;
+  --brand-color: #409EFF;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
