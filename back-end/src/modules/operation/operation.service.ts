@@ -8,15 +8,15 @@ export class OperationService {
     constructor(private readonly pageService: PageService) {
     }
 
-    async save(operation: Operation, userId: number) {
+    async save(newOperations: Operation[], userId: number) {
         const key = String(userId)
-        const count = await redis.rpush(key, JSON.stringify(operation))
+        const count = await redis.rpush(key, ...newOperations.map((operation) => JSON.stringify(operation)))
         if (count >= 20) {
-            const operations: Operation[] = []
+            const oldOperations: Operation[] = []
             while (await redis.llen(key) > 0) {
-                operations.push(JSON.parse(await redis.lpop(key)))
+                oldOperations.push(JSON.parse(await redis.lpop(key)))
             }
-            await this.pageService.update(operations, userId)
+            await this.pageService.update(oldOperations, userId)
         }
     }
 }
