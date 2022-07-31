@@ -1,9 +1,9 @@
 import {readFileSync} from "fs"
 import * as yaml from "js-yaml"
 import * as lodash from "lodash"
-import {join} from "path"
+import {resolve} from "path"
 
-const FILENAME = "../application.yml"
+const FILENAME = "application.yml"
 
 export class ConfigUtil {
     private static instance: ConfigUtil
@@ -11,7 +11,7 @@ export class ConfigUtil {
 
     constructor() {
         this.options = yaml.load(
-            readFileSync(join(__dirname, FILENAME), "utf8"),
+            readFileSync(resolve("src/", FILENAME), "utf8"),
         ) as Record<string, any>
     }
 

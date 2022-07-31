@@ -1,10 +1,11 @@
-import {Injectable} from "@nestjs/common"
-import {InjectModel} from "@nestjs/mongoose"
-import {Model} from "mongoose"
-import {PageDocument} from "./page.schema"
+import {Injectable, Logger} from "@nestjs/common"
+import {Operation} from "../operation/operation.entity"
 
 @Injectable()
 export class PageService {
-    constructor(@InjectModel("Page") private pageModel: Model<PageDocument>) {
+    private readonly logger = new Logger(PageService.name)
+
+    async update(operations: Operation[], userId: number) {
+        this.logger.log("更新页面：" + JSON.stringify(operations))
     }
 }

@@ -11,6 +11,6 @@ db:
     database: 501lowcode
   redis:
     host: localhost
-    port: 6478
+    port: 6378
     password: "123456"
     database: 0
