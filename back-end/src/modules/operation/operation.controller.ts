@@ -4,7 +4,7 @@ import {OperationService} from "./operation.service"
 
 @Controller()
 export class OperationController {
-    private readonly logger = new Logger(OperationService.name)
+    private readonly logger = new Logger(OperationController.name)
 
     constructor(private readonly service: OperationService) {
     }

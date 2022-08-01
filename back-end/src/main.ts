@@ -4,7 +4,7 @@ import {ConfigUtil} from "./utils/config.util"
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule)
-    const port = ConfigUtil.getInstance().get("http.port")
+    const port = ConfigUtil.get("http.port")
     await app.listen(port as number)
 }
 
