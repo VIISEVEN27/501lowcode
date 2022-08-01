@@ -1,0 +1,46 @@
+{
+  "path": "页面",
+  "children": {
+    "path": "页面",
+    "children": [
+      {
+        "path": "header",
+        "children": {
+          "path": "页面头部",
+          "children": {
+            "path": "行列容器",
+            "children": {
+              "path": "行",
+              "children": {
+                "path": "列",
+                "children": {
+                  "path": "段落",
+                  "children": {
+                    "path": "文本",
+                    "children": {}
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "path": "区域",
+        "children": {
+          "path": "区块",
+          "children": {
+            "path": "行列容器",
+            "children": {
+              "path": "行",
+              "children": {
+                "path": "列",
+                "children": {}
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

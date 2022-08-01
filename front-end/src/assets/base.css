@@ -1,0 +1,25 @@
+:root {
+  --base-border-color: #dcdfe6;
+  --dark-border-color: #d4d7de;
+  --darker-border-color: #cdd0d6;
+  --brand-color: #409eff;
+
+  --form-font-indent: 20px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+html,
+body,
+#app {
+  width: 100%;
+  height: 100%;
+}
