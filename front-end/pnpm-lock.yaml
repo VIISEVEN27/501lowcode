@@ -4,7 +4,6 @@ specifiers:
   '@arco-design/web-vue': ^2.33.1
   '@element-plus/icons-vue': ^2.0.6
   '@iconify/json': ^2.1.85
-  '@iconify/vue': ^3.2.1
   '@types/node': ^18.6.2
   '@vitejs/plugin-vue': ^3.0.1
   '@vueuse/core': ^9.0.0
@@ -40,7 +39,6 @@ dependencies:
 
 devDependencies:
   '@iconify/json': 2.1.85
-  '@iconify/vue': 3.2.1_vue@3.2.37
   '@types/node': 18.6.2
   '@vitejs/plugin-vue': 3.0.1_vite@3.0.3+vue@3.2.37
   consola: 2.15.3
@@ -179,14 +177,6 @@ packages:
       local-pkg: 0.4.2
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /@iconify/vue/3.2.1_vue@3.2.37:
-    resolution: {integrity: sha512-c4R6ZgFo1JrJ8aPMMgOPgfU7lBswihMGR+yWe/P4ZukC3kTkeT4+lkt9Pc/itVFMkwva/S/7u9YofmYv57fnNQ==}
-    peerDependencies:
-      vue: 3.x
-    dependencies:
-      vue: 3.2.37
     dev: true
 
   /@nodelib/fs.scandir/2.1.5:
