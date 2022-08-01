@@ -1,9 +1,10 @@
+import {Component} from "../page/page.entity"
+
 export type OperationType = "update" | "insert" | "delete"
 
-export class Operation {
+export interface Operation {
     type: OperationType
-    name: string
-    key: string | number
-    value: string | object
+    key: string
+    value: string | Component | Record<string, string>
     time: Date
 }

@@ -11,19 +11,20 @@ export class OperationService {
     constructor(private readonly pageService: PageService) {
     }
 
-    async save(newOperations: Operation[], userId: number) {
-        const key = String(userId)
+    async save(newOperations: Operation[], id: string) {
+        const key = String(id)
         const count = await redis.rpush(key, ...newOperations.map((operation) => JSON.stringify(operation)))
-        if (count >= 20) {
-            await this._update(userId)
+        if (count > 20) {
+            this._update(id)
         }
     }
 
     @multiDebounce(500, 5000)
-    async _update(@key("multiDebounce") userId: number) {
-        const key = String(userId)
-        const operations: Operation[] = (await redis.lrange(key, 0, -1)).map((item) => JSON.parse(item))
-        await redis.ltrim(key, operations.length, -1)
-        await this.pageService.update(operations, userId)
+    _update(@key("multiDebounce") id: string) {
+        const key = String(id)
+        redis.multi().lrange(key, 0, -21).ltrim(key, -20, -1).exec().then((results) => {
+            const operations: Operation[] = (results[0][1] as string[]).map((item) => JSON.parse(item))
+            this.pageService.update(operations, id)
+        })
     }
 }
