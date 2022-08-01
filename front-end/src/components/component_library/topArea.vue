@@ -1,12 +1,5 @@
 <script setup lang="ts">
-    import {
-        Check,
-        Delete,
-        Edit,
-        Message,
-        Search,
-        Star,
-    } from '@element-plus/icons-vue';
+
     import { Icon } from '@iconify/vue';
 
     import { ref } from 'vue'
@@ -15,51 +8,46 @@
 
 </script>
 
-<template>
-    <div class="common-layout">
-        <el-container>
-        
-        <el-header>
-            <div class="top-area">
-                <el-row :gutter="10" >
-                    
-                    <el-col :span="6"><span class="top-left-area">501-低代码平台</span></el-col> 
+<template>        
+    
+    <div class="top-area">
+        <el-row :gutter="10" >
+            
+            <el-col :span="6"><span class="top-left-area">501-低代码平台</span></el-col> 
 
-                    <el-col :span="6">
-                        <span class="top-center-area">
-                            <div >
-                                <el-radio-group v-model="radioDevice">
-                                <el-radio-button label="pc" />
-                                <el-radio-button label="pad" />
-                                <el-radio-button label="phone" />
-                                
-                                </el-radio-group>
-                            </div>
-                        </span>
-                    </el-col>
+            <el-col :span="6">
+                <span class="top-center-area">
+                    <div >
+                        <el-radio-group v-model="radioDevice">
+                        <el-radio-button label="pc" />
+                        <el-radio-button label="pad" />
+                        <el-radio-button label="phone" />
+                        
+                        </el-radio-group>
+                    </div>
+                </span>
+            </el-col>
 
-                    <el-col :span="12">
-                        <span class="top-right-area">
-                        <div class="mb-4">
-                            <!-- 撤销-->
-                            <el-button><Icon icon="akar-icons:arrow-forward-thick" /></el-button>
-                            <!-- 恢复 -->
-                            <el-button><Icon icon="akar-icons:arrow-back-thick" /></el-button>
-                            <el-button>异步加载资源</el-button>
-                            <el-button>保存到本地</el-button>
-                            <el-button>重置页面</el-button>
-                            <el-button type="primary">出码</el-button>
-                            <el-button type="primary">预览</el-button>
-                        </div>
-                        </span>
-                    </el-col>
-                    
-                </el-row>
-            </div>
-        </el-header>
-        <el-main>Main</el-main>
-        </el-container>
+            <el-col :span="12">
+                <span class="top-right-area">
+                <div class="mb-4">
+                    <!-- 撤销-->
+                    <el-button><Icon icon="akar-icons:arrow-forward-thick" /></el-button>
+                    <!-- 恢复 -->
+                    <el-button><Icon icon="akar-icons:arrow-back-thick" /></el-button>
+                    <el-button>异步加载资源</el-button>
+                    <el-button>保存到本地</el-button>
+                    <el-button>重置页面</el-button>
+                    <el-button type="primary">出码</el-button>
+                    <el-button type="primary">预览</el-button>
+                </div>
+                </span>
+            </el-col>
+            
+        </el-row>
     </div>
+    
+        
 </template>
 
 <style lang="scss" scoped>
@@ -67,9 +55,7 @@
         border: 1px solid var(--darker-border-color);
         padding: 1em;
     }
-    .common-layout{
-        align-items: center;
-    }
+    
     .top-left-area{
         font-size: 30px;
         color:#0e0303;

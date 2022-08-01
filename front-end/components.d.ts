@@ -11,7 +11,10 @@ declare module '@vue/runtime-core' {
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCol: typeof import('element-plus/es')['ElCol']
     ElContainer: typeof import('element-plus/es')['ElContainer']
+    ElDivider: typeof import('element-plus/es')['ElDivider']
     ElHeader: typeof import('element-plus/es')['ElHeader']
+    ElIcon: typeof import('element-plus/es')['ElIcon']
+    ElInput: typeof import('element-plus/es')['ElInput']
     ElMain: typeof import('element-plus/es')['ElMain']
     ElRadioButton: typeof import('element-plus/es')['ElRadioButton']
     ElRadioGroup: typeof import('element-plus/es')['ElRadioGroup']
@@ -22,8 +25,10 @@ declare module '@vue/runtime-core' {
     ICarbonAccessibility: typeof import('~icons/carbon/accessibility')['default']
     LibraryItem: typeof import('./src/components/component_library/LibraryItem.vue')['default']
     LibraryPanel: typeof import('./src/components/component_library/LibraryPanel.vue')['default']
+    MainArea: typeof import('./src/components/component_library/MainArea.vue')['default']
+    MianArea: typeof import('./src/components/component_library/mianArea.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    TopArea: typeof import('./src/components/component_library/topArea.vue')['default']
+    TopArea: typeof import('./src/components/component_library/TopArea.vue')['default']
   }
 }
