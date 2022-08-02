@@ -1,14 +1,14 @@
 <!--
  * @Author: yky
  * @Date: 2022-08-01 21:51:43
- * @LastEditTime: 2022-08-02 08:38:41
+ * @LastEditTime: 2022-08-02 13:46:08
 -->
 <script setup lang="ts">
-import PageAttribute from "@/components/node-attribute/PageAttribute.vue";
-import TopAttribute from "@/components/node-attribute/TopAttribute.vue";
-import RowAndColumnAttribute from "@/components/node-attribute/RowAndColumnAttribute.vue";
-import RowAttribute from "@/components/node-attribute/RowAttribute.vue";
-import ColumnAttribute from "@/components/node-attribute/ColumnAttribute.vue";
+import PageAttribute from "@/components/node_attribute/PageAttribute.vue";
+import TopAttribute from "@/components/node_attribute/TopAttribute.vue";
+import RowAndColumnAttribute from "@/components/node_attribute/RowAndColumnAttribute.vue";
+import RowAttribute from "@/components/node_attribute/RowAttribute.vue";
+import ColumnAttribute from "@/components/node_attribute/ColumnAttribute.vue";
 </script>
 <template>
   <div>
