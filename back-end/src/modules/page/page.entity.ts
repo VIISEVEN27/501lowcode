@@ -9,5 +9,5 @@ export interface Component {
 
 export interface Page {
     title: string
-    body: Component
+    body: Component[]
 }

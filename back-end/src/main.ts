@@ -1,8 +1,3 @@
-/*
- * @Author: yky
- * @Date: 2022-07-30 08:51:36
- * @LastEditTime: 2022-08-02 13:57:17
- */
 import {NestFactory} from "@nestjs/core"
 import {AppModule} from "./app.module"
 import {MongoDB} from "./db/mongo.db"

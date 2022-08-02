@@ -5,6 +5,7 @@ import {PageService} from "./page.service"
 
 describe("PageService", () => {
     let service: PageService
+    let id: string
 
     beforeEach(async () => {
         await MongoDB.connect()
@@ -15,15 +16,16 @@ describe("PageService", () => {
     })
 
     it("should create a document", async () => {
-        const id = await service.create()
-        console.log(id)
-        expect(id).toMatch(/[\w\d]{24}/)
+        expect(async () => {
+            id = await service.create()
+            console.log(id)
+        }).not.toThrow()
     })
 
     it("should insert a component", async () => {
         const operation: Operation = {
             type: "insert",
-            key: "body.children.0",
+            key: "body.0",
             value: {
                 name: "title0",
                 type: "h1",
@@ -31,16 +33,28 @@ describe("PageService", () => {
             },
             time: new Date(),
         }
-        expect(await service.update([operation], "62e8082ed6df534f6f3ce087")).toBe(true)
+        expect(async () => await service.update([operation], id)).not.toThrow()
     })
 
     it("should update a component", async () => {
         const operation: Operation = {
             type: "update",
-            key: "body.children.0.type",
+            key: "body.0.type",
             value: "h2",
             time: new Date(),
         }
-        expect(await service.update([operation], "62e8082ed6df534f6f3ce087")).toBe(true)
+        expect(async () => await service.update([operation], id)).not.toThrow()
+    })
+
+    it("should delete a component", async () => {
+        const operation: Operation = {
+            type: "delete",
+            key: "body",
+            value: {
+                name: "title0",
+            },
+            time: new Date(),
+        }
+        expect(async () => await service.update([operation], id)).not.toThrow()
     })
 })
