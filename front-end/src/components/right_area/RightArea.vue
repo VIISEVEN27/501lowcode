@@ -1,11 +1,11 @@
 <!--
  * @Author: yky
  * @Date: 2022-07-30 22:12:48
- * @LastEditTime: 2022-08-02 13:46:38
+ * @LastEditTime: 2022-08-02 14:10:11
 -->
 <script setup lang="ts">
 import SettingStyle from "@/components/setting_style/SettingStyle.vue";
-import NodeAttribute from "@/components/node_attribute/NodeAttribute.vue";
+import NodeAttribute from "@/components/node_attributes/NodeAttribute.vue";
 
 import { Ref, ref } from "vue";
 

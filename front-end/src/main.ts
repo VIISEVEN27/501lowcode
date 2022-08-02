@@ -1,3 +1,8 @@
+/*
+ * @Author: yky
+ * @Date: 2022-07-30 08:51:36
+ * @LastEditTime: 2022-08-02 13:59:39
+ */
 import TDesign from "tdesign-vue-next";
 import "tdesign-vue-next/es/style/index.css";
 import { createApp } from "vue";

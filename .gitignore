@@ -1,3 +1,8 @@
+/*
+ * @Author: yky
+ * @Date: 2022-07-30 08:51:36
+ * @LastEditTime: 2022-08-02 14:04:14
+ */
 dist
 node_modules
 dist-ssr
@@ -37,3 +42,9 @@ coverage
 *.njsproj
 *.sln
 *.sw?
+
+# Docker
+/back-end/docker/redis/data/
+/back-end/docker/redis/log/
+/back-end/docker/mongod/data/
+/back-end/docker/mongod/log/
