@@ -1,7 +1,7 @@
 <!--
  * @Author: yky
  * @Date: 2022-07-31 20:13:34
- * @LastEditTime: 2022-08-01 00:19:36
+ * @LastEditTime: 2022-08-02 02:31:02
 -->
 <script setup lang="ts">
 import { ref, reactive } from "vue";
@@ -12,7 +12,7 @@ const page_function_form = reactive({
   pagination: false, //开启分页
 });
 // 页面背景色
-let back_color = ref("#d2d1c7");
+const back_color = ref("#d2d1c7");
 const layout_stretch = ref("stretch");
 </script>
 <template>
@@ -91,7 +91,7 @@ const layout_stretch = ref("stretch");
     width: 100%;
     text-indent: var(--form-font-indent);
     // background-color: var(--el-color-info-light-3);
-    background: var(--color-block-background-shallow, rgba(31, 56, 88, 0.06));
+    background: rgba(31, 56, 88, 0.06);
   }
   .el-form-item {
     align-items: center;

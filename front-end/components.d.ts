@@ -7,6 +7,7 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    ColumnAttribute: typeof import('./src/components/node-attribute/ColumnAttribute.vue')['default']
     ElAutocomplete: typeof import('element-plus/es')['ElAutocomplete']
     ElBreadcrumb: typeof import('element-plus/es')['ElBreadcrumb']
     ElBreadcrumbItem: typeof import('element-plus/es')['ElBreadcrumbItem']
@@ -58,6 +59,9 @@ declare module '@vue/runtime-core' {
     RightArea: typeof import('./src/components/right_area/RightArea.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    RowAndColumnAttribute: typeof import('./src/components/node-attribute/RowAndColumnAttribute.vue')['default']
+    RowAttribute: typeof import('./src/components/node-attribute/RowAttribute.vue')['default']
     SettingStyle: typeof import('./src/components/setting_style/SettingStyle.vue')['default']
+    TopAttribute: typeof import('./src/components/node-attribute/TopAttribute.vue')['default']
   }
 }

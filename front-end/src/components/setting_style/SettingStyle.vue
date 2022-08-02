@@ -1,7 +1,7 @@
 <!--
  * @Author: yky
  * @Date: 2022-07-30 23:08:24
- * @LastEditTime: 2022-07-31 21:17:21
+ * @LastEditTime: 2022-08-02 02:44:10
 -->
 <script setup lang="ts">
 import { reactive } from "vue";
@@ -9,9 +9,9 @@ import { ref } from "vue";
 
 // 文字表单
 const font_form = reactive({
-  font_form: 0, // 字号
+  font_size: 0, // 字号
   line_height: 0, // 行高
-  font_weight: "", //字重
+  font_weight: 100, //字重
   font_color: "#557846", //文字颜色
   align_direction: "left", //对齐方向
   opacity_value: 0, //透明度进度条
@@ -27,25 +27,18 @@ const background_url = ref("");
 //定位表单
 const position_form = reactive({
   position: "static",
-  cascading_order: "1",
+  cascading_order: 1,
   float_direction: "none",
   clear_float: "none",
 });
 </script>
 <template>
   <!-- 行内样式 -->
-  <el-collapse
-    v-model="activeNames"
-    class="setting-part-style"
-    @change="handleChange"
-  >
-    <!-- <el-collapse-item name="1">
+  <el-collapse class="setting-part-style">
+    <el-collapse-item name="1">
       <template #title class="collapse-title">布局</template>
-      <div>
-        Consistent within interface: all elements should be consistent, such as:
-        design style, icons and texts, position of elements, etc.
-      </div>
-    </el-collapse-item> -->
+      <div>暂无</div>
+    </el-collapse-item>
     <el-collapse-item name="2">
       <template #title class="collapse-title">文字</template>
       <el-form :model="font_form" label-position="left" class="font-form">
@@ -230,13 +223,10 @@ const position_form = reactive({
         </el-form-item>
       </el-form>
     </el-collapse-item>
-    <!-- <el-collapse-item name="5">
+    <el-collapse-item name="5">
       <template #title class="collapse-title">边框</template>
-      <div>
-        Decision making: giving advices about operations is acceptable, but do
-        not make decisions for the users;
-      </div>
-    </el-collapse-item> -->
+      <div>暂无</div>
+    </el-collapse-item>
   </el-collapse>
 </template>
 

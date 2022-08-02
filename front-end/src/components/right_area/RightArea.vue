@@ -1,46 +1,48 @@
 <!--
  * @Author: yky
  * @Date: 2022-07-30 22:12:48
- * @LastEditTime: 2022-07-31 23:54:03
+ * @LastEditTime: 2022-08-02 02:58:55
 -->
 <script setup lang="ts">
 import SettingStyle from "@/components/setting_style/SettingStyle.vue";
-import NodeAttribute from "@/components/node-attribute/PageAttribute.vue";
+import NodeAttribute from "@/components/node-attribute/NodeAttribute.vue";
 
-import { ref } from "vue";
+import { Ref, ref } from "vue";
 
-let selectSetting = ref(1);
+// 菜单绑定变量
+let selectSetting = ref("1");
 
-const handleSelect = (item: selectSetting) => {
-  console.log(item);
+// 选择菜单 ==> 属性 | 样式
+const handleSelectMenu = (index: string): void => {
+  // 更新
+  selectSetting.value = index;
 };
-
-defineProps<{
-  component: { path1: string; path2: string; path3: string };
-}>();
 </script>
 
 <template>
   <div class="right-area">
-    <el-breadcrumb separator="/" class="settings-navigator">
-      <el-breadcrumb-item :to="{ path: '/' }">{{ path1 }}</el-breadcrumb-item>
-      <el-breadcrumb-item>{{ path2 }}</el-breadcrumb-item>
-      <el-breadcrumb-item>{{ path3 }}</el-breadcrumb-item>
-    </el-breadcrumb>
+    <div class="path">
+      <el-icon class="path-icon"><Calendar /></el-icon>
+      <el-breadcrumb separator-icon="ArrowRight" class="settings-navigator">
+        <el-breadcrumb-item>页面</el-breadcrumb-item>
+        <el-breadcrumb-item>页面</el-breadcrumb-item>
+        <el-breadcrumb-item>区域</el-breadcrumb-item>
+      </el-breadcrumb>
+    </div>
     <el-menu
       class="class-nav"
       mode="horizontal"
       :default-active="selectSetting"
+      @select="handleSelectMenu"
     >
-      <el-menu-item class="class-nav-item" index="1">属性</el-menu-item>
-      <el-menu-item class="class-nav-item" index="2">样式</el-menu-item>
-      <el-menu-item class="class-nav-item" index="3">高级</el-menu-item>
+      <el-menu-item index="1">属性</el-menu-item>
+      <el-menu-item index="2">样式</el-menu-item>
     </el-menu>
     <div class="setting-content">
       <div class="setting-title"></div>
       <div class="setting-style">
-        <SettingStyle v-show="true" />
-        <NodeAttribute />
+        <NodeAttribute v-show="selectSetting == '1'" />
+        <SettingStyle v-show="selectSetting == '2'" />
       </div>
     </div>
   </div>
@@ -49,22 +51,20 @@ defineProps<{
 <style lang="scss" scoped>
 .right-area {
   width: 400px;
-  min-height: 100%;
+  height: auto;
   // box-shadow: ;
   background-color: #fff;
-  .class-nav {
-    width: 100%;
+  .path {
     display: flex;
-    box-sizing: border-box;
-    justify-content: space-between;
-    .class-nav-item {
-      flex: 1;
+    align-items: center;
+    height: 40px;
+    border-bottom: 1px solid var(--dark-border-color);
+    .path-icon {
+      margin: 0 15px;
     }
   }
-  .setting-content {
-    .setting-style {
-      border: 1px solid var(--el-collapse-border-color);
-    }
+  .class-nav {
+    display: flex;
   }
 }
 </style>
