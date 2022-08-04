@@ -3,58 +3,59 @@
  -->
 
 <script setup lang="ts">
-
+import Preview from "@/components/component_library/Preview.vue"
 </script>
 
 <template>
 
   <div class="lc-wockbench">
-    <el-container>
-      <el-header class="lc-workbench-header">
-        
-            <div class="lc-workbench-header-contentArea">
-              <div class="lc-workbench-header-content">
-                  Hello 501LowCode!!
-                  <!-- <el-input v-model="headerInput" placeholder="Hello 501LowCode!!" clearable /> -->                
-              </div>
-            </div>
-        
-      </el-header>
+      <Preview/>
+<!--    <el-container>-->
+<!--      <el-header class="lc-workbench-header">-->
+<!--        -->
+<!--            <div class="lc-workbench-header-contentArea">-->
+<!--              <div class="lc-workbench-header-content">-->
+<!--                  Hello 501LowCode!!-->
+<!--                  &lt;!&ndash; <el-input v-model="headerInput" placeholder="Hello 501LowCode!!" clearable /> &ndash;&gt;                -->
+<!--              </div>-->
+<!--            </div>-->
+<!--        -->
+<!--      </el-header>-->
 
-      <el-main class="lc-workbench-main">
-        
-          <!-- area、block分别表示区域、区块，参考阿里低代码平台 -->
-          <div class="lc-workbench-main-full">
-            <div class="area">
-              <div class="areaTitle">
-                区域标题
-              </div>
-              <div class="block">
-                <div class="blockTitle">
-                  区块标题
-                </div>
-                <el-divider />
-                <div class="dragArea">
-                  拖拽组件或模板到此处
-                </div>
-              </div>
-            </div>
-            
-          </div>
+<!--      <el-main class="lc-workbench-main">-->
+<!--        -->
+<!--          &lt;!&ndash; area、block分别表示区域、区块，参考阿里低代码平台 &ndash;&gt;-->
+<!--          <div class="lc-workbench-main-full">-->
+<!--            <div class="area">-->
+<!--              <div class="areaTitle">-->
+<!--                区域标题-->
+<!--              </div>-->
+<!--              <div class="block">-->
+<!--                <div class="blockTitle">-->
+<!--                  区块标题-->
+<!--                </div>-->
+<!--                <el-divider />-->
+<!--                <div class="dragArea">-->
+<!--                  拖拽组件或模板到此处-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            -->
+<!--          </div>-->
 
-          <el-divider>
-            <el-icon><star-filled /></el-icon>
-          </el-divider>
+<!--          <el-divider>-->
+<!--            <el-icon><star-filled /></el-icon>-->
+<!--          </el-divider>-->
 
-          <!-- 待添加的 -->
-          <div class="lc-workbench-main-empty">
-            <div class="lc-workbench-main-empty-text">
-              <div>待添加内容区域</div> 
-            </div>
-          </div>
-        
-      </el-main>
-    </el-container>
+<!--          &lt;!&ndash; 待添加的 &ndash;&gt;-->
+<!--          <div class="lc-workbench-main-empty">-->
+<!--            <div class="lc-workbench-main-empty-text">-->
+<!--              <div>待添加内容区域</div> -->
+<!--            </div>-->
+<!--          </div>-->
+<!--        -->
+<!--      </el-main>-->
+<!--    </el-container>-->
   </div>
     
 </template>

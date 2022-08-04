@@ -47,6 +47,7 @@ declare module '@vue/runtime-core' {
     NodeAttribute: typeof import('./src/components/node_attributes/NodeAttribute.vue')['default']
     OutlineTree: typeof import('./src/components/outline_tree/OutlineTree.vue')['default']
     PageAttribute: typeof import('./src/components/node_attributes/PageAttribute.vue')['default']
+    Preview: typeof import('./src/components/component_library/Preview.vue')['default']
     RightArea: typeof import('./src/components/right_area/RightArea.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

@@ -9,6 +9,13 @@ import TopArea from "@/components/component_library/TopArea.vue";
 import MainArea from "@/components/component_library/MainArea.vue";
 import LeftArea from "@/components/left_area/LeftArea.vue";
 import RightArea from "@/components/right_area/RightArea.vue";
+import {Page} from "@/entities/page"
+import {useRoute} from "vue-router"
+
+const route = useRoute()
+const id = route.params.id as string
+const page = new Page(id)
+page.init()
 </script>
 
 <template>
