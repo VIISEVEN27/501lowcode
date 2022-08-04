@@ -1,36 +1,74 @@
+import {ElCheckbox} from "element-plus"
 import {h, VNode} from "vue"
 
-export interface Component {
+export interface IComponent {
     name: string
     type: string
-    props: Record<string, string>
-    style: Record<string, string>
-    slots: string | Component | Component[]
-    render: () => VNode
+    props?: Record<string, any>
+    style?: Record<string, string>
+    slots?: (string | IComponent)[]
 }
 
-export class Title implements Component {
+export abstract class Component implements IComponent {
     name: string
     type: string
-    props: Record<string, string>
-    style: Record<string, string>
-    slots: string
+    props?: Record<string, any>
+    style?: Record<string, string>
+    slots?: (string | Component)[]
 
     constructor(
         name: string,
-        level: 1 | 2 | 3 | 4 | 5 | 6,
-        text: string,
-        props: Record<string, string> = {},
-        style: Record<string, string> = {},
+        type: string,
+        props?: Record<string, any>,
+        style?: Record<string, string>,
+        slots?: (string | Component)[],
     ) {
         this.name = name
-        this.type = "h" + level
-        this.slots = text
+        this.type = type
         this.props = props
         this.style = style
+        this.slots = slots
+    }
+
+    abstract render(): VNode
+}
+
+export class Title extends Component {
+    render() {
+        return h(
+            this.type,
+            {...this.props, style: this.style},
+            this.slots?.map((item) => typeof item === "string" ? item : item.render()),
+        )
+    }
+}
+
+export type CheckboxPropType = {
+    label?: string
+    disabled?: boolean
+    size?: "large" | "default" | "small"
+    name?: string
+    checked?: boolean
+}
+
+export class Checkbox extends Component {
+    props?: CheckboxPropType
+
+    constructor(
+        name: string,
+        props?: CheckboxPropType,
+        style?: Record<string, string>,
+        slots?: (string | Component)[],
+    ) {
+        super(name, "checkbox", undefined, style, slots)
+        this.props = props
     }
 
     render() {
-        return h(this.type, {...this.props, style: this.style}, this.slots)
+        return h(
+            ElCheckbox,
+            {...this.props, style: this.style},
+            this.slots?.map((item) => typeof item === "string" ? item : item.render()),
+        )
     }
 }
