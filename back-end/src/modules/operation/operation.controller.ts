@@ -1,4 +1,4 @@
-import {Body, Controller, Logger, Post} from "@nestjs/common"
+import {Body, Controller, Get, Logger, Post} from "@nestjs/common"
 import {Operation} from "./operation.entity"
 import {OperationService} from "./operation.service"
 
@@ -15,7 +15,7 @@ export class OperationController {
     constructor(private readonly service: OperationService) {
     }
 
-    @Post("/save")
+    @Post("save")
     async save(@Body() body: Body) {
         try {
             await this.service.save(body.data, body.id)

@@ -1,13 +1,14 @@
 export interface Component {
     name: string
     type: string
-    text?: string
-    props?: Record<string, string>
+    props?: Record<string, any>
     style?: Record<string, string>
-    children: Component[]
+    slots?: (string | Component)[]
 }
 
 export interface Page {
+    id?: string
     title: string
     body: Component[]
+    time: Date
 }

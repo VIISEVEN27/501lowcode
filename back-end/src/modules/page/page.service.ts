@@ -10,9 +10,10 @@ export class PageService {
     private readonly collection = MongoDB.collection("pages")
 
     async create() {
-        const newPage: Page = {title: "未命名页面", body: []}
+        const newPage: Page = {title: "未命名页面", body: [], time: new Date()}
         const result = await this.collection.insertOne(newPage)
-        return result.insertedId.toHexString()
+        newPage.id = result.insertedId.toHexString()
+        return newPage
     }
 
     async update(operations: Operation[], id: string) {
