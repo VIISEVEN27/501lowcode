@@ -1,5 +1,6 @@
-import {Component} from "@/entities/component"
+import {Component, Factory, IComponent} from "@/entities/component"
 import axios from "axios"
+import {h} from "vue"
 
 export class Page {
     id: string
@@ -15,15 +16,15 @@ export class Page {
     }
 
     async init() {
-        // const resp = await axios.get("/api/page/" + this.id)
-        // const {title, body, time} = resp.data
-        // this.title = title
-        // this.body = body
-        // this.time = time
-        console.log(this.id)
+        const resp = await axios.get("/api/page", {params: {id: this.id}})
+        const {title, body, time} = resp.data
+        this.title = title
+        this.body = body.map((item: IComponent) => Factory(item))
+        this.time = time
     }
 
     render() {
-        // TODO 渲染预览页面
+        return h("div", {"_id": this.id},
+            this.body.map((component) => component.render()))
     }
 }

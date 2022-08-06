@@ -1,21 +1,19 @@
-<!--
- * @Author: yky
- * @Date: 2022-08-02 13:54:34
- * @LastEditTime: 2022-08-02 14:06:23
--->
 <script setup lang="ts">
 import LibraryPanel from "@/components/component_library/LibraryPanel.vue";
 import TopArea from "@/components/component_library/TopArea.vue";
-import MainArea from "@/components/component_library/MainArea.vue";
+import MainArea from "@/components/main_area/MainArea.vue";
 import LeftArea from "@/components/left_area/LeftArea.vue";
 import RightArea from "@/components/right_area/RightArea.vue";
 import {Page} from "@/entities/page"
+import {provide, reactive} from "vue"
 import {useRoute} from "vue-router"
 
 const route = useRoute()
 const id = route.params.id as string
-const page = new Page(id)
+const page = reactive(new Page(id))
 page.init()
+
+provide("page", page)
 </script>
 
 <template>
