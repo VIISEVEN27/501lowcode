@@ -10,7 +10,7 @@ interface RestaurantItem {
 }
 
 const searchText = ref("");
-let state = ref("4");
+let state = ref("0");
 
 const restaurants = ref<RestaurantItem[]>([]);
 const querySearch = (queryString: string, cb: any) => {

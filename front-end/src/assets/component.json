@@ -1,278 +1,371 @@
 {
-  "基础": [
-    {
+  "基础": [{
       "name": "H1",
-      "zh": "一级标题"
+      "zh": "一级标题",
+      "type": "Title",
+      "props": {
+        "level": 1
+      },
+      "slots": ["一级标题"]
     },
     {
       "name": "H2",
-      "zh": "二级标题"
+      "zh": "二级标题",
+      "type": "Title",
+      "props": {
+        "level": 2
+      },
+      "slots": ["二级标题"]
     },
     {
       "name": "H3",
-      "zh": "三级标题"
+      "zh": "三级标题",
+      "type": "Title",
+      "props": {
+        "level": 3
+      },
+      "slots": ["三级标题"]
     },
     {
       "name": "H4",
-      "zh": "四级标题"
+      "zh": "四级标题",
+      "type": "Title",
+      "props": {
+        "level": 4
+      },
+      "slots": ["四级标题"]
     },
     {
       "name": "H5",
-      "zh": "五级标题"
+      "zh": "五级标题",
+      "type": "Title",
+      "props": {
+        "level": 5
+      },
+      "slots": ["五级标题"]
     },
     {
       "name": "H6",
-      "zh": "六级标题"
+      "zh": "六级标题",
+      "type": "Title",
+      "props": {
+        "level": 1
+      },
+      "slots": ["六级标题"]
     },
     {
       "name": "Text",
-      "zh": "文本"
+      "zh": "文本",
+      "type": "Title"
     },
     {
       "name": "Link",
-      "zh": "链接"
+      "zh": "链接",
+      "type": "Link",
+      "slots": ["链接"]
     },
     {
       "name": "Button",
-      "zh": "按钮"
+      "zh": "按钮",
+      "type": "Button",
+      "props": {
+        "draggable": true
+      },
+      "slots": ["按钮"]
     }
   ],
-  "布局": [
-    {
+  "布局": [{
       "name": "Container",
-      "zh": "布局容器"
+      "zh": "布局容器",
+      "type": "Container"
     },
     {
       "name": "Space",
-      "zh": "间距"
+      "zh": "间距",
+      "type": "Space"
     },
     {
       "name": "Paragraph",
-      "zh": "段落"
+      "zh": "段落",
+      "type": "Paragraph",
+      "slots": []
     },
     {
       "name": "Divider",
-      "zh": "分割线"
+      "zh": "分割线",
+      "type": "Divider"
     }
   ],
-  "导航": [
-    {
+  "导航": [{
       "name": "PageHeader",
-      "zh": "页头"
+      "zh": "页头",
+      "type": "PageHeader"
     },
     {
       "name": "Menu",
-      "zh": "菜单"
+      "zh": "菜单",
+      "type": "Menu"
     },
     {
       "name": "Dropdown",
-      "zh": "下拉菜单"
+      "zh": "下拉菜单",
+      "type": "Dropdown"
     },
     {
       "name": "Tabs",
-      "zh": "标签页"
+      "zh": "标签页",
+      "type": "Tabs"
     },
     {
       "name": "Breadcrumb",
-      "zh": "面包屑"
+      "zh": "面包屑",
+      "type": "Breadcrumb"
     },
     {
       "name": "Steps",
-      "zh": "步骤条"
+      "zh": "步骤条",
+      "type": "Steps"
     },
     {
       "name": "Backtop",
-      "zh": "回到顶部"
+      "zh": "回到顶部",
+      "type": "Backtop"
     },
     {
       "name": "Affix",
-      "zh": "固钉"
+      "zh": "固钉",
+      "type": "Affix"
     }
   ],
-  "数据": [
-    {
+  "数据": [{
       "name": "Avatar",
-      "zh": "头像"
+      "zh": "头像",
+      "type": "Avatar"
     },
     {
       "name": "Badge",
-      "zh": "徽章"
+      "zh": "徽章",
+      "type": "Badge"
     },
     {
       "name": "Calendar",
-      "zh": "日历"
+      "zh": "日历",
+      "type": "Calendar"
     },
     {
       "name": "Card",
-      "zh": "卡片"
+      "zh": "卡片",
+      "type": "Card"
     },
     {
       "name": "Carousel",
-      "zh": "走马灯"
+      "zh": "走马灯",
+      "type": "Carousel"
     },
     {
       "name": "Collapse",
-      "zh": "折叠面板"
+      "zh": "折叠面板",
+      "type": "Collapse"
     },
     {
       "name": "Descriptions",
-      "zh": "描述列表"
+      "zh": "描述列表",
+      "type": "Descriptions"
     },
     {
       "name": "Empty",
-      "zh": "空状态"
+      "zh": "空状态",
+      "type": "Empty"
     },
     {
       "name": "Image",
-      "zh": "图片"
+      "zh": "图片",
+      "type": "Image"
     },
     {
       "name": "Pagination",
-      "zh": "分页"
+      "zh": "分页",
+      "type": "Pagination"
     },
     {
       "name": "Progress",
-      "zh": "进度条"
+      "zh": "进度条",
+      "type": "Progress"
     },
     {
       "name": "Result",
-      "zh": "结果"
+      "zh": "结果",
+      "type": "Result"
     },
     {
       "name": "Skeleton",
-      "zh": "骨架屏"
+      "zh": "骨架屏",
+      "type": "Skeleton"
     },
     {
       "name": "Table",
-      "zh": "表格"
+      "zh": "表格",
+      "type": "Table"
     },
     {
       "name": "Tag",
-      "zh": "标签"
+      "zh": "标签",
+      "type": "Tag"
     },
     {
       "name": "Timeline",
-      "zh": "时间线"
+      "zh": "时间线",
+      "type": "Timeline"
     },
     {
       "name": "Tree",
-      "zh": "树形控件"
+      "zh": "树形控件",
+      "type": "Tree"
     },
     {
       "name": "TreeSelect",
-      "zh": "树形选择"
+      "zh": "树形选择",
+      "type": "TreeSelect"
     }
   ],
-  "表单": [
-    {
+  "表单": [{
       "name": "Cascader",
-      "zh": "级联选择器"
+      "zh": "级联选择器",
+      "type": "Cascader"
     },
     {
       "name": "Checkbox",
-      "zh": "多选框"
+      "zh": "多选框",
+      "type": "Checkbox"
     },
     {
       "name": "ColorPicker",
-      "zh": "取色器"
+      "zh": "取色器",
+      "type": "ColorPicker"
     },
     {
       "name": "DatePicker",
-      "zh": "日期选择器"
+      "zh": "日期选择器",
+      "type": "DatePicker"
     },
     {
       "name": "DateTimePicker",
-      "zh": "日期时间选择器"
+      "zh": "日期时间选择器",
+      "type": "DateTimePicker"
     },
     {
       "name": "Form",
-      "zh": "表单"
+      "zh": "表单",
+      "type": "Form"
     },
     {
       "name": "Input",
-      "zh": "输入框"
+      "zh": "输入框",
+      "type": "Input"
     },
     {
       "name": "InputNumber",
-      "zh": "数字输入框"
+      "zh": "数字输入框",
+      "type": "InputNumber"
     },
     {
       "name": "Radio",
-      "zh": "单选框"
+      "zh": "单选框",
+      "type": "Radio"
     },
     {
       "name": "Rate",
-      "zh": "评分"
+      "zh": "评分",
+      "type": "Rate"
     },
     {
       "name": "Select",
-      "zh": "选择器"
+      "zh": "选择器",
+      "type": "Select"
     },
     {
       "name": "Slider",
-      "zh": "滑块"
+      "zh": "滑块",
+      "type": "Slider"
     },
     {
       "name": "Switch",
-      "zh": "开关"
+      "zh": "开关",
+      "type": "Switch"
     },
     {
       "name": "TimePicker",
-      "zh": "时间选择器"
+      "zh": "时间选择器",
+      "type": "TimePicker"
     },
     {
       "name": "TimeSelect",
-      "zh": "时间选择"
+      "zh": "时间选择",
+      "type": "TimeSelect"
     },
     {
       "name": "Transfer",
-      "zh": "穿梭框"
+      "zh": "穿梭框",
+      "type": "Transfer"
     },
     {
       "name": "Upload",
-      "zh": "上传"
+      "zh": "上传",
+      "type": "Upload"
     }
   ],
-  "反馈": [
-    {
+  "反馈": [{
       "name": "Alert",
-      "zh": "提示"
+      "zh": "提示",
+      "type": "Alert",
+      "props": {
+        "title": "error"
+      }
     },
     {
       "name": "Dialog",
-      "zh": "对话框"
+      "zh": "对话框",
+      "type": "Dialog"
     },
     {
       "name": "Drawer",
-      "zh": "抽屉"
+      "zh": "抽屉",
+      "type": "Drawer"
     },
     {
       "name": "Loading",
-      "zh": "加载"
+      "zh": "加载",
+      "type": "Loading"
     },
     {
       "name": "Message",
-      "zh": "消息提示"
+      "zh": "消息提示",
+      "type": "Message"
     },
     {
       "name": "MessageBox",
-      "zh": "消息弹出框"
+      "zh": "消息弹出框",
+      "type": "MessageBox"
     },
     {
       "name": "Notification",
-      "zh": "通知"
+      "zh": "通知",
+      "type": "Notification"
     },
     {
       "name": "PopConfirm",
-      "zh": "弹出确认框"
+      "zh": "弹出确认框",
+      "type": "PopConfirm"
     },
     {
       "name": "Popover",
-      "zh": "弹出框"
+      "zh": "弹出框",
+      "type": "Popover"
     },
     {
       "name": "Tooltip",
-      "zh": "文字提示"
+      "zh": "文字提示",
+      "type": "Tooltip"
     }
   ]
 }

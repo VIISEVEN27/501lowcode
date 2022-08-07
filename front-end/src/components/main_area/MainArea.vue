@@ -8,6 +8,19 @@ import {Page} from "@/entities/page"
 import {inject} from "vue"
 
 const page = inject("page") as Page
+
+function dragEnter(e:DragEvent){
+  const node = e.target as HTMLElement;
+  node.classList.add("dragover");
+}
+function dragLeave(e:DragEvent){
+  const node = e.target as HTMLElement;
+  node.classList.remove("dragover");
+}
+function dragOver(e:DragEvent){
+  e.stopPropagation();
+  e.preventDefault();
+}
 </script>
 
 <template>
@@ -26,7 +39,12 @@ const page = inject("page") as Page
       </el-header>
 
       <el-main class="lc-workbench-main">
-          <Preview/>
+          <div
+          @dragenter="dragEnter"
+          @dragleave="dragLeave"
+           @dragover="dragOver">
+        <Preview  />
+      </div>
           <!-- area、block分别表示区域、区块，参考阿里低代码平台 -->
 <!--          <div class="lc-workbench-main-full">-->
 <!--            <div class="area">-->
