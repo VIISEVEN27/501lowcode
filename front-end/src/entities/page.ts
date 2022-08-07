@@ -2,6 +2,13 @@ import {Component, Factory, IComponent} from "@/entities/component"
 import axios from "axios"
 import {h} from "vue"
 
+export interface IPage {
+    id: string
+    title: string
+    body: IComponent[]
+    time: Date
+}
+
 export class Page {
     id: string
     title: string
@@ -26,5 +33,14 @@ export class Page {
     render() {
         return h("div", {"_id": this.id},
             this.body.map((component) => component.render()))
+    }
+
+    toJSON(): IPage {
+        return {
+            id: this.id,
+            title: this.title,
+            body: this.body.map((item) => item.toJSON()),
+            time: this.time,
+        }
     }
 }

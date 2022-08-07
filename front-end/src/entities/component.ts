@@ -59,7 +59,7 @@ export interface IComponent {
     slots?: (string | IComponent)[]
 }
 
-export class Component {
+export class Component implements IComponent {
     name: string
     type: string
     props?: Record<string, any>
@@ -76,6 +76,16 @@ export class Component {
 
     render(): VNode {
         return _render(resolveComponent("El" + this.type), this.props, this.style, this.slots)
+    }
+
+    toJSON(): IComponent {
+        return {
+            name: this.name,
+            type: this.type,
+            props: this.props,
+            style: this.style,
+            slots: this.slots?.map((slot) => typeof slot === "string" ? slot : slot.toJSON()),
+        }
     }
 }
 
