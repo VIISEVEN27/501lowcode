@@ -33,6 +33,7 @@ export class Page {
 
     render() {
         let Vcomponent = this.body
+        console.log(Vcomponent);
         function getComponent(componentType: string) {
             const components = Object.values(componentInfo).reduce((pre, cur) => pre.concat(cur), []);
             for (const value of components) {
@@ -42,14 +43,21 @@ export class Page {
             }
         }
 
-        function insertItem(node: HTMLElement, component: IComponent, e: DragEvent) {
-            Vcomponent.push(Factory(component));
-            console.log(Vcomponent)
+        function insertItem(component: IComponent, cls: string) {
+            if (cls === "bottom") {
+                Vcomponent.push(Factory(component));
+            }
+            else {
+                Vcomponent.unshift(Factory(component));
+            }
         }
 
         function dragNear(node: HTMLElement, e: DragEvent) {
-            const x = e.offsetX, y = e.offsetY;
-            return [x, y];
+            const top = e.offsetY;
+            const bottom = node.clientHeight - e.offsetY;
+            node.classList.remove('top');
+            node.classList.remove('bottom');
+            node.classList.add(top > bottom ? 'bottom' : 'top');
         }
         function mouseEnter(e: MouseEvent) {
             const node = e.target as HTMLElement;
@@ -61,6 +69,7 @@ export class Page {
             node.classList.remove("hover");
             node.parentElement?.classList.add("hover");
 
+
         }
         function dropItem(e: DragEvent) {
             const node = e.currentTarget as HTMLElement;
@@ -69,7 +78,12 @@ export class Page {
                     const componentType = e.dataTransfer?.getData('text/plain');
                     const component = getComponent(componentType);
                     if (component) {
-                        insertItem(node, component, e);
+                        if (node.classList.contains('top') || node.classList.contains('bottom')) {
+                            const classes = node.classList.contains('top') ? "top" : "bottom";
+                            insertItem(component, classes)
+                        }
+                        node.classList.remove('top');
+                        node.classList.remove('bottom');
                     }
 
                 }
@@ -78,12 +92,18 @@ export class Page {
         function dragOver(e: DragEvent) {
             const node = e.currentTarget as HTMLElement;
             if (node.classList.contains('root')) {
-                const [x, y] = dragNear(node, e);
+                dragNear(node, e);
                 e.stopPropagation();
             }
             e.preventDefault();
         }
-
+        function dragLeave(e: DragEvent) {
+            const node = e.currentTarget as HTMLElement;
+            if (node.classList.contains('root')) {
+                node.classList.remove('top');
+                node.classList.remove('bottom');
+            }
+        }
 
         return h("div",
             {
@@ -91,8 +111,9 @@ export class Page {
                 class: "root",
                 onDrop: dropItem,
                 onDragover: dragOver,
-                onMouseenter: mouseEnter,
-                onMouseleave: mouseLeave,
+                onDragleave: dragLeave,
+                onmouseenter: mouseEnter,
+                onMouseleave: mouseLeave
             },
             Vcomponent.map((component) => component.render()))
     }

@@ -92,7 +92,7 @@ export class Component implements IComponent {
 function _render(type: any, props?: Record<string, any>, style?: Record<string, string>, slots?: (string | Component)[]) {
     return h(type, {
         ...props, style: style,
-    }, () => slots?.map((item) => typeof item === "string" ? item : item.render()))
+    }, { default: () => slots?.map((item) => typeof item === "string" ? item : item.render()) })
 }
 
 type Constructor<T = any> = new(...args: any[]) => T
@@ -125,6 +125,26 @@ export class Title extends Component {
 
 @RegisterIt()
 export class Checkbox extends Component {
+}
+
+@RegisterIt()
+export class Avatar extends Component {
+}
+
+@RegisterIt()
+export class Badge extends Component {
+}
+
+@RegisterIt()
+export class Calendar extends Component {
+}
+
+@RegisterIt()
+export class Descriptions extends Component {
+}
+
+@RegisterIt()
+export class DescriptionsItem extends Component {
 }
 
 @RegisterIt()
@@ -180,6 +200,26 @@ export class Slider extends Component {
 }
 
 @RegisterIt()
+export class Switch extends Component {
+}
+
+@RegisterIt()
+export class TimePicker extends Component {
+}
+
+@RegisterIt()
+export class TimeSelect extends Component {
+}
+
+@RegisterIt()
+export class Transfer extends Component {
+}
+
+@RegisterIt()
+export class Upload extends Component {
+}
+
+@RegisterIt()
 export class Card extends Component {
 }
 
@@ -207,7 +247,7 @@ export class Empty extends Component {
 export class Image extends Component {
     render() {
         // @ts-ignore
-        return h(ElImage, {...this.props, style: this.style}, {
+        return h(ElImage, { ...this.props, style: this.style }, {
             default: () => this.slots?.map((item) => typeof item === "string" ? item : item.render()),
             error: () => h("div", {
                 style: {
@@ -227,6 +267,50 @@ export class Image extends Component {
 
 @RegisterIt()
 export class Pagination extends Component {
+}
+
+@RegisterIt()
+export class Progress extends Component {
+}
+
+@RegisterIt()
+export class Result extends Component {
+}
+
+@RegisterIt()
+export class Skeleton extends Component {
+}
+
+@RegisterIt()
+export class Table extends Component {
+}
+
+@RegisterIt()
+export class TableColumn extends Component {
+}
+
+@RegisterIt()
+export class Tag extends Component {
+}
+
+@RegisterIt()
+export class Timeline extends Component {
+}
+
+@RegisterIt()
+export class TimelineItem extends Component {
+}
+
+@RegisterIt()
+export class Tree extends Component {
+}
+
+@RegisterIt()
+export class TreeSelect extends Component {
+}
+
+@RegisterIt()
+export class Cascader extends Component {
 }
 
 @RegisterIt()
@@ -288,12 +372,12 @@ export class MenuItem extends Component {
 @RegisterIt()
 export class Dropdown extends Component {
     render() {
-        return h(ElDropdown, {...this.props, style: this.style}, {
+        return h(ElDropdown, { ...this.props, style: this.style }, {
             default: () => h("span", {
                 style: {
                     cursor: "pointer", color: "var(--el-color-primary)", display: "flex", alignItems: "center",
                 },
-            }, [this.props?.text ?? "请选择", h(ElIcon, {className: "el-icon el-icon--right"}, () => h(ArrowDown))]),
+            }, [this.props?.text ?? "请选择", h(ElIcon, { className: "el-icon el-icon--right" }, () => h(ArrowDown))]),
             dropdown: () => [this.slots?.map((item) => typeof item === "string" ? item : item.render())],
         })
     }
@@ -305,6 +389,10 @@ export class DropdownMenu extends Component {
 
 @RegisterIt()
 export class DropdownItem extends Component {
+}
+
+@RegisterIt()
+export class TabPane extends Component {
 }
 
 @RegisterIt()
@@ -333,4 +421,66 @@ export class Backtop extends Component {
 
 @RegisterIt()
 export class Affix extends Component {
+}
+
+@RegisterIt()
+export class Text extends Component {
+    render() {
+        return _render("span", this.props, this.style, this.slots)
+    }
+
+}
+
+@RegisterIt()
+export class Paragraph extends Component {
+    render() {
+        return _render("p", this.props, this.style, this.slots)
+    }
+}
+
+@RegisterIt()
+export class Alert extends Component {
+
+}
+
+@RegisterIt()
+export class Dialog extends Component {
+
+}
+
+@RegisterIt()
+export class Drawer extends Component {
+
+}
+
+
+
+@RegisterIt()
+export class Message extends Component {
+
+}
+
+@RegisterIt()
+export class MessageBox extends Component {
+
+}
+
+@RegisterIt()
+export class Notification extends Component {
+
+}
+
+@RegisterIt()
+export class Popconfirm extends Component {
+
+}
+
+@RegisterIt()
+export class PopOver extends Component {
+
+}
+
+@RegisterIt()
+export class Tooltip extends Component {
+
 }

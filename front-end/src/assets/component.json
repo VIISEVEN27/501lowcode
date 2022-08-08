@@ -49,14 +49,15 @@
       "zh": "六级标题",
       "type": "Title",
       "props": {
-        "level": 1
+        "level": 6
       },
       "slots": ["六级标题"]
     },
     {
       "name": "Text",
       "zh": "文本",
-      "type": "Title"
+      "type": "Text",
+      "slots": ["这是一个文本"]
     },
     {
       "name": "Link",
@@ -77,18 +78,58 @@
   "布局": [{
       "name": "Container",
       "zh": "布局容器",
-      "type": "Container"
+      "type": "Container",
+      "style": {
+        "width": "400px",
+        "height": "200px"
+      },
+      "slots": [{
+          "name": "Header",
+          "type": "Header",
+          "style": {
+            "width": "400px",
+            "background-color": "blue"
+          },
+          "slots": ["Header"]
+        },
+        {
+          "name": "Container1",
+          "type": "Container",
+          "slots": [{
+              "name": "Aside",
+              "type": "Aside",
+              "style": {
+                "width": "100px",
+                "background-color": "red"
+              },
+              "slots": ["Aside"]
+            },
+            {
+              "name": "Main",
+              "type": "Main",
+              "style": {
+                "background-color": "yellow"
+              },
+              "slots": ["Main"]
+            }
+          ]
+        }
+
+      ]
     },
     {
       "name": "Space",
       "zh": "间距",
-      "type": "Space"
+      "type": "Space",
+      "props": {
+        "alignment": "center"
+      }
     },
     {
       "name": "Paragraph",
       "zh": "段落",
       "type": "Paragraph",
-      "slots": []
+      "slots": ["这是一个段落"]
     },
     {
       "name": "Divider",
@@ -104,7 +145,21 @@
     {
       "name": "Menu",
       "zh": "菜单",
-      "type": "Menu"
+      "type": "Menu",
+      "props": {
+        "mode": "horizontal"
+      },
+      "slots": [{
+          "name": "MenuItem",
+          "type": "MenuItem",
+          "slots": ["item1"]
+        },
+        {
+          "name": "MenuItem",
+          "type": "MenuItem",
+          "slots": ["item2"]
+        }
+      ]
     },
     {
       "name": "Dropdown",
@@ -114,17 +169,66 @@
     {
       "name": "Tabs",
       "zh": "标签页",
-      "type": "Tabs"
+      "type": "Tabs",
+      "props": {
+        "type": "card"
+      },
+      "slots": [{
+          "name": "TabPane1",
+          "type": "TabPane",
+          "props": {
+            "label": "User"
+          },
+          "slots": ["User"]
+        },
+        {
+          "name": "TabPane2",
+          "type": "TabPane",
+          "props": {
+            "label": "Config"
+          },
+          "slots": ["Config"]
+        }
+      ]
     },
     {
       "name": "Breadcrumb",
       "zh": "面包屑",
-      "type": "Breadcrumb"
+      "type": "Breadcrumb",
+      "props": {
+        "separator": "/"
+      },
+      "slots": [{
+          "name": "BreadcrumbItem1",
+          "type": "BreadcrumbItem",
+          "slots": ["home"]
+        },
+        {
+          "name": "BreadcrumbItem2",
+          "type": "BreadcrumbItem",
+          "slots": ["detail"]
+        }
+      ]
     },
     {
       "name": "Steps",
       "zh": "步骤条",
-      "type": "Steps"
+      "type": "Steps",
+      "slots": [{
+          "name": "Step1",
+          "type": "Step",
+          "props": {
+            "title": "Step 1"
+          }
+        },
+        {
+          "name": "Step2",
+          "type": "Step",
+          "props": {
+            "title": "Step 2"
+          }
+        }
+      ]
     },
     {
       "name": "Backtop",
@@ -140,12 +244,25 @@
   "数据": [{
       "name": "Avatar",
       "zh": "头像",
-      "type": "Avatar"
+      "type": "Avatar",
+      "props": {
+        "shape": "square",
+        "src": "https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png"
+      }
+
     },
     {
       "name": "Badge",
       "zh": "徽章",
-      "type": "Badge"
+      "type": "Badge",
+      "props": {
+        "value": 12
+      },
+      "slots": [{
+        "name": "Button1",
+        "type": "Button",
+        "slots": ["button"]
+      }]
     },
     {
       "name": "Calendar",
@@ -170,7 +287,27 @@
     {
       "name": "Descriptions",
       "zh": "描述列表",
-      "type": "Descriptions"
+      "type": "Descriptions",
+      "props": {
+        "title": "Test"
+      },
+      "slots": [{
+          "name": "DescriptionsItem1",
+          "type": "DescriptionsItem",
+          "props": {
+            "label": "name"
+          },
+          "slots": ["admin"]
+        },
+        {
+          "name": "DescriptionsItem2",
+          "type": "DescriptionsItem",
+          "props": {
+            "label": "sex"
+          },
+          "slots": ["female"]
+        }
+      ]
     },
     {
       "name": "Empty",
@@ -180,12 +317,19 @@
     {
       "name": "Image",
       "zh": "图片",
-      "type": "Image"
+      "type": "Image",
+      "props": {
+        "src": "https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg"
+      }
     },
     {
       "name": "Pagination",
       "zh": "分页",
-      "type": "Pagination"
+      "type": "Pagination",
+      "props": {
+        "layout": "prev, pager, next",
+        "total": 50
+      }
     },
     {
       "name": "Progress",
@@ -195,7 +339,12 @@
     {
       "name": "Result",
       "zh": "结果",
-      "type": "Result"
+      "type": "Result",
+      "props": {
+        "icon": "success",
+        "title": "Success Tip",
+        "sub-title": "Please follow the instructions"
+      }
     },
     {
       "name": "Skeleton",
@@ -205,17 +354,67 @@
     {
       "name": "Table",
       "zh": "表格",
-      "type": "Table"
+      "type": "Table",
+      "props": {
+        "data": [{
+            "date": "2016-05-03",
+            "name": "Tom",
+            "address": "No. 189, Grove St, Los Angeles"
+          },
+          {
+            "date": "2016-05-03",
+            "name": "Tom",
+            "address": "No. 189, Grove St, Los Angeles"
+          }
+        ]
+      },
+      "slots": [{
+          "name": "TableColumn1",
+          "type": "TableColumn",
+          "props": {
+            "prop": "date",
+            "label": "Date"
+          }
+        },
+        {
+          "name": "TableColumn2",
+          "type": "TableColumn",
+          "props": {
+            "prop": "name",
+            "label": "Name"
+          }
+        },
+        {
+          "name": "TableColumn3",
+          "type": "TableColumn",
+          "props": {
+            "prop": "address",
+            "label": "Address"
+          }
+        }
+      ]
     },
     {
       "name": "Tag",
       "zh": "标签",
-      "type": "Tag"
+      "type": "Tag",
+      "slots": ["tag1"]
     },
     {
       "name": "Timeline",
       "zh": "时间线",
-      "type": "Timeline"
+      "type": "Timeline",
+      "slots": [{
+          "name": "TimelineItem1",
+          "type": "TimelineItem",
+          "slots": ["time1"]
+        },
+        {
+          "name": "TimelineItem2",
+          "type": "TimelineItem",
+          "slots": ["time2"]
+        }
+      ]
     },
     {
       "name": "Tree",
@@ -236,7 +435,8 @@
     {
       "name": "Checkbox",
       "zh": "多选框",
-      "type": "Checkbox"
+      "type": "Checkbox",
+      "slots": ["option"]
     },
     {
       "name": "ColorPicker",
@@ -251,12 +451,38 @@
     {
       "name": "DateTimePicker",
       "zh": "日期时间选择器",
-      "type": "DateTimePicker"
+      "type": "DatePicker",
+      "props": {
+        "type": "datetime"
+      }
     },
     {
       "name": "Form",
       "zh": "表单",
-      "type": "Form"
+      "type": "Form",
+      "slots": [{
+          "name": "FormItem1",
+          "type": "FormItem",
+          "props": {
+            "label": "name"
+          },
+          "slots": [{
+            "name": "Input1",
+            "type": "Input"
+          }]
+        },
+        {
+          "name": "FormItem2",
+          "type": "FormItem",
+          "props": {
+            "label": "telephone"
+          },
+          "slots": [{
+            "name": "Input2",
+            "type": "Input"
+          }]
+        }
+      ]
     },
     {
       "name": "Input",
@@ -271,7 +497,8 @@
     {
       "name": "Radio",
       "zh": "单选框",
-      "type": "Radio"
+      "type": "Radio",
+      "slots": ["option"]
     },
     {
       "name": "Rate",
@@ -311,7 +538,18 @@
     {
       "name": "Upload",
       "zh": "上传",
-      "type": "Upload"
+      "type": "Upload",
+      "props": {
+        "actions": "https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
+      },
+      "slots": [{
+        "name": "Button2",
+        "type": "Button",
+        "props": {
+          "type": "primary"
+        },
+        "slots": ["upload"]
+      }]
     }
   ],
   "反馈": [{
@@ -330,7 +568,15 @@
     {
       "name": "Drawer",
       "zh": "抽屉",
-      "type": "Drawer"
+      "type": "Drawer",
+      "props": {
+        "model-value": true
+      },
+      "slots": [{
+        "name": "Text1",
+        "type": "Text",
+        "slots": ["hello"]
+      }]
     },
     {
       "name": "Loading",
@@ -355,17 +601,20 @@
     {
       "name": "PopConfirm",
       "zh": "弹出确认框",
-      "type": "PopConfirm"
+      "type": "Popconfirm"
+
     },
     {
       "name": "Popover",
       "zh": "弹出框",
       "type": "Popover"
+
     },
     {
       "name": "Tooltip",
       "zh": "文字提示",
       "type": "Tooltip"
+
     }
   ]
 }

@@ -9,18 +9,18 @@ import {inject} from "vue"
 
 const page = inject("page") as Page
 
-function dragEnter(e:DragEvent){
-  const node = e.target as HTMLElement;
-  node.classList.add("dragover");
-}
-function dragLeave(e:DragEvent){
-  const node = e.target as HTMLElement;
-  node.classList.remove("dragover");
-}
-function dragOver(e:DragEvent){
-  e.stopPropagation();
-  e.preventDefault();
-}
+// function dragEnter(e:DragEvent){
+//   const node = e.target as HTMLElement;
+//   node.classList.add("dragover");
+// }
+// function dragLeave(e:DragEvent){
+//   const node = e.target as HTMLElement;
+//   node.classList.remove("dragover");
+// }
+// function dragOver(e:DragEvent){
+//   e.stopPropagation();
+//   e.preventDefault();
+// }
 </script>
 
 <template>
@@ -39,12 +39,9 @@ function dragOver(e:DragEvent){
       </el-header>
 
       <el-main class="lc-workbench-main">
-          <div
-          @dragenter="dragEnter"
-          @dragleave="dragLeave"
-           @dragover="dragOver">
+          
         <Preview  />
-      </div>
+    
           <!-- area、block分别表示区域、区块，参考阿里低代码平台 -->
 <!--          <div class="lc-workbench-main-full">-->
 <!--            <div class="area">-->
@@ -92,11 +89,27 @@ function dragOver(e:DragEvent){
 //  border: 1px solid var(--darker-border-color);
 //}
 
+
 .lc-workbench-main{
   background-color: white;
   border: 1px solid var(--darker-border-color);
 }
 
+  .root{
+    background-color: rgba(0, 0, 100, .3);
+  }
+  
+  .root.hover{
+    outline: 1px solid red;
+  }
+
+  .root.bottom{
+    border-bottom: 3px solid blue;
+  }
+
+  .root.top{
+    border-top: 3px solid blue;
+  }
 //.lc-workbench-header-content{
 //  margin: 10px;
 //  font-size: 20px;
