@@ -12,6 +12,7 @@ specifiers:
   axios: ^0.27.2
   consola: ^2.15.3
   element-plus: ^2.2.11
+  monaco-editor: ^0.34.0
   pinia: ^2.0.17
   sass: ^1.54.0
   tdesign-vue-next: ^0.18.1
@@ -21,6 +22,7 @@ specifiers:
   unplugin-icons: ^0.14.7
   unplugin-vue-components: ^0.21.2
   vite: ^3.0.0
+  vite-plugin-monaco-editor: ^1.1.0
   vite-plugin-style-import: ^2.0.0
   vue: ^3.2.37
   vue-router: ^4.1.3
@@ -35,6 +37,7 @@ dependencies:
   ant-design-vue: 3.2.10_vue@3.2.37
   axios: 0.27.2
   element-plus: 2.2.11_vue@3.2.37
+  monaco-editor: 0.34.0
   pinia: 2.0.17_j6bzmzd4ujpabbp5objtwxyjp4
   tdesign-vue-next: 0.18.1_vue@3.2.37
   vue: 3.2.37
@@ -51,6 +54,7 @@ devDependencies:
   unplugin-icons: 0.14.7_vite@3.0.3
   unplugin-vue-components: 0.21.2_vite@3.0.3+vue@3.2.37
   vite: 3.0.3_sass@1.54.0
+  vite-plugin-monaco-editor: 1.1.0_monaco-editor@0.34.0
   vite-plugin-style-import: 2.0.0_vite@3.0.3
   vue-tsc: 0.38.9_typescript@4.7.4
 
@@ -1414,6 +1418,9 @@ packages:
       pkg-types: 0.3.3
     dev: true
 
+  /monaco-editor/0.34.0:
+    resolution: {integrity: sha512-VF+S5zG8wxfinLKLrWcl4WUizMx+LeJrG4PM/M78OhcwocpV0jiyhX/pG6Q9jIOhrb/ckYi6nHnaR5OojlOZCQ==}
+
   /ms/2.1.2:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
     dev: true
@@ -2094,6 +2101,14 @@ packages:
     resolution: {integrity: sha512-nYXQLCBkpJ8X6ltALua9dRrZDHVYxjJ1wgskNt1lH9fzGjs3tgojGSCBjmEPwkWS1y29+DrizMTW19Pr9uB2nw==}
     engines: {node: '>= 0.10'}
     dev: false
+
+  /vite-plugin-monaco-editor/1.1.0_monaco-editor@0.34.0:
+    resolution: {integrity: sha512-IvtUqZotrRoVqwT0PBBDIZPNraya3BxN/bfcNfnxZ5rkJiGcNtO5eAOWWSgT7zullIAEqQwxMU83yL9J5k7gww==}
+    peerDependencies:
+      monaco-editor: '>=0.33.0'
+    dependencies:
+      monaco-editor: 0.34.0
+    dev: true
 
   /vite-plugin-style-import/2.0.0_vite@3.0.3:
     resolution: {integrity: sha512-qtoHQae5dSUQPo/rYz/8p190VU5y19rtBaeV7ryLa/AYAU/e9CG89NrN/3+k7MR8mJy/GPIu91iJ3zk9foUOSA==}

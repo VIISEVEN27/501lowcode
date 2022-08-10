@@ -7,6 +7,7 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    CodeEditor: typeof import('./src/components/right_area/CodeEditor.vue')['default']
     ColumnAttribute: typeof import('./src/components/node_attributes/ColumnAttribute.vue')['default']
     ElAutocomplete: typeof import('element-plus/es')['ElAutocomplete']
     ElBreadcrumb: typeof import('element-plus/es')['ElBreadcrumb']
@@ -38,6 +39,7 @@ declare module '@vue/runtime-core' {
     ElTabPane: typeof import('element-plus/es')['ElTabPane']
     ElTabs: typeof import('element-plus/es')['ElTabs']
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
+    Inspector: typeof import('./src/components/right_area/Inspector.vue')['default']
     LeftArea: typeof import('./src/components/left_area/LeftArea.vue')['default']
     LeftAreaMenu: typeof import('./src/components/left_area/LeftAreaMenu.vue')['default']
     LibraryItem: typeof import('./src/components/component_library/LibraryItem.vue')['default']
