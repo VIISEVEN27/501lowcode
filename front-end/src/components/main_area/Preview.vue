@@ -12,3 +12,21 @@ export default defineComponent({
     },
 })
 </script>
+
+<style lang="scss" scoped>
+.root{
+    background-color: white;
+  }
+  
+  .hover{
+    outline: 1px solid red;
+  }
+
+  .bottom{
+    border-bottom: 3px solid blue;
+  }
+
+  .top{
+    border-top: 3px solid blue;
+  }
+</style>

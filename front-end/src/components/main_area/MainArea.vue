@@ -95,21 +95,6 @@ const page = inject("page") as Page
   border: 1px solid var(--darker-border-color);
 }
 
-  .root{
-    background-color: rgba(0, 0, 100, .3);
-  }
-  
-  .root.hover{
-    outline: 1px solid red;
-  }
-
-  .root.bottom{
-    border-bottom: 3px solid blue;
-  }
-
-  .root.top{
-    border-top: 3px solid blue;
-  }
 //.lc-workbench-header-content{
 //  margin: 10px;
 //  font-size: 20px;
