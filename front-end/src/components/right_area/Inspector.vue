@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useAppStore } from "@/stores/app.js";
 import { computed, ref } from "vue";
-import { searchVcomponent, removeVcomponentById } from "./EditorContent";
+import { searchVcomponent, removeVcomponentById } from "../main_area/EditorContent";
 import componentInfo from "@/assets/component_info.js";
 import CodeEditor from "./CodeEditor.vue";
 import * as monaco from "monaco-editor";
