@@ -53,7 +53,7 @@ onMounted(() => {
 <template>
   <div class="library-panel">
     <h3>组件库</h3>
-    <!-- <el-autocomplete
+    <el-autocomplete
       v-model="searchText"
       class="w-50 m-2"
       placeholder="搜索组件"
@@ -68,7 +68,7 @@ onMounted(() => {
         <div class="name">{{ item.name }}</div>
         <span class="zh"> {{ item.zh }}</span>
       </template>
-    </el-autocomplete> -->
+    </el-autocomplete>
 
     <el-tabs class="tabs" v-model="state">
       <el-tab-pane
