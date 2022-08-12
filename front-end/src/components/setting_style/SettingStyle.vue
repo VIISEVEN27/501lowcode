@@ -32,6 +32,7 @@ const position_form = reactive({
   clear_float: "none",
 });
 </script>
+
 <template>
   <!-- 行内样式 -->
   <el-collapse class="setting-part-style">
@@ -230,7 +231,7 @@ const position_form = reactive({
   </el-collapse>
 </template>
 
-<style lang="scss" scope>
+<style lang="scss" scoped>
 .setting-part-style {
   margin: 0 20px;
   // 文字表单

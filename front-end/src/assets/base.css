@@ -2,8 +2,11 @@
   --base-border-color: #DCDFE6;
   --dark-border-color: #D4D7DE;
   --darker-border-color: #CDD0D6;
+  --hover-border-color: #5584ff;
+  --active-border-color: #026cff;
+  --focus-border-color: #187aff;
   --brand-color: #409EFF;
-
+  --secondary-text-color: #909399;
   --form-font-indent: 20px;
 }
 
@@ -11,15 +14,21 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  position: relative;
 }
 
-* {
-  padding: 0;
-  margin: 0;
-}
 html,
 body,
 #app {
+  margin: 0;
   width: 100%;
   height: 100%;
+}
+
+h3 {
+  margin: 5px 0;
+}
+
+video {
+  vertical-align: top;
 }

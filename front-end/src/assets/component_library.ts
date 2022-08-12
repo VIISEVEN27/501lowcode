@@ -72,4 +72,4 @@ export default {
   //   "ElPopover",
   //   "ElTooltip",
   // ],
-};
+} as Record<string, string[]>;

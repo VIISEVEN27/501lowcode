@@ -170,7 +170,6 @@ function saveEventHandler(name: string) {
           <el-drawer
             v-model="showCodeEditor"
             direction="rtl"
-            :append-to-body="true"
           >
             <template #header>
               <h3>{{ schema.desc }}</h3>

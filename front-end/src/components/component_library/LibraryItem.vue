@@ -1,15 +1,22 @@
 <script setup lang="ts">
-const prop = defineProps<{
+import { useAppStore } from "@/stores/app";
+
+const props = defineProps<{
+  type: string,
   component: { name: string, zh: string }
 }>();
 
-function dragStart(e:DragEvent){
-  e.dataTransfer?.setData('text/plain',prop.component['name']);
+function dragstartHandler(e: DragEvent) {
+  console.log('LibraryItem dragstart');
+  e.dataTransfer?.setData('text/plain', props.type);
+  const appStore = useAppStore();
+  appStore.activeComponent = '';
+  console.log(appStore.activeComponent);
 }
 </script>
 
 <template>
-  <div class="library-item" draggable="true" @dragstart="dragStart">
+  <div class="library-item" draggable="true" @dragstart="dragstartHandler">
     <div class="name">{{ component.name }}</div>
     <div class="zh">{{ component.zh }}</div>
   </div>

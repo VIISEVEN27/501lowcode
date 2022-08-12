@@ -1,23 +1,24 @@
 <script setup lang="ts">
-import componentInfo from "@/assets/component.json";
+import componentLibrary from "@/assets/component_library";
+import componentInfo from "@/assets/component_info";
 import { ref, onMounted } from "vue";
 import LibraryItem from "./LibraryItem.vue";
 import { Search } from "@element-plus/icons-vue";
 
 interface RestaurantItem {
+  id: string;
   name: String;
   zh: string;
 }
 
 const searchText = ref("");
-let state = ref("0");
+let state = ref("布局");
 
 const restaurants = ref<RestaurantItem[]>([]);
 const querySearch = (queryString: string, cb: any) => {
   const results = queryString
     ? restaurants.value.filter(createFilter(queryString))
     : restaurants.value;
-  // call callback function to return suggestions
   cb(results);
 };
 const createFilter = (queryString: string) => {
@@ -30,18 +31,18 @@ const createFilter = (queryString: string) => {
 };
 
 const loadAll = () => {
-  return Object.values(componentInfo).reduce((pre, cur) => pre.concat(cur), []);
+  return Object.keys(componentInfo).map((key) => ({
+    id: key,
+    ...componentInfo[key],
+  }));
 };
 
 const handleSelect = (item: RestaurantItem) => {
-  const arr = Object.values(componentInfo);
-  for (const values of arr) {
-    values.forEach(function (value) {
-      if (value.name === item.name) {
-        state.value = arr.indexOf(values) + "";
-      }
-    });
-  }
+  Object.keys(componentLibrary).forEach((category) => {
+    if (componentLibrary[category].includes(item.id)) {
+      state.value = category;
+    }
+  });
 };
 
 onMounted(() => {
@@ -52,7 +53,7 @@ onMounted(() => {
 <template>
   <div class="library-panel">
     <h3>组件库</h3>
-    <el-autocomplete
+    <!-- <el-autocomplete
       v-model="searchText"
       class="w-50 m-2"
       placeholder="搜索组件"
@@ -67,18 +68,25 @@ onMounted(() => {
         <div class="name">{{ item.name }}</div>
         <span class="zh"> {{ item.zh }}</span>
       </template>
-    </el-autocomplete>
+    </el-autocomplete> -->
 
     <el-tabs class="tabs" v-model="state">
-      <el-tab-pane v-for="(value, key) in componentInfo" :label="key">
+      <el-tab-pane
+        v-for="(value, key) in componentLibrary"
+        :label="key"
+        :name="key"
+      >
         <el-scrollbar height="313px">
           <template v-for="item in value">
             <LibraryItem
-              :component="item"
+              :type="item"
+              :component="componentInfo[item]"
               v-if="
                 searchText === '' ||
-                item.name.toLowerCase().includes(searchText.toLowerCase()) ||
-                item.zh.includes(searchText)
+                componentInfo[item].name
+                  .toLowerCase()
+                  .includes(searchText.toLowerCase()) ||
+                componentInfo[item].zh.includes(searchText)
               "
             />
           </template>
@@ -90,9 +98,8 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .library-panel {
-  min-width: 450px;
-  max-width: 25%;
   border: 1px solid var(--darker-border-color);
+  border-width: 0 1px 1px 0;
   padding: 1em;
   height: 500px;
   background-color: #fff;

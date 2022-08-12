@@ -23,7 +23,7 @@ export default defineConfig({
   },
   plugins: [
     vue(),
-    ElementPlus(),
+    // ElementPlus(),
     createStyleImportPlugin({
       libs: [
         {
@@ -49,9 +49,9 @@ export default defineConfig({
     Components({
       resolvers: [ElementPlusResolver(), IconsResolver()],
     }),
-    // monacoEditorPlugin({
-    //   languageWorkers: ['editorWorkerService', 'typescript'],
-    // }),
+    monacoEditorPlugin.default({
+      languageWorkers: ['editorWorkerService', 'typescript'],
+    }),
   ],
   resolve: {
     alias: {

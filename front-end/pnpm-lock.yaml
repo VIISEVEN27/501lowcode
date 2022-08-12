@@ -11,7 +11,7 @@ specifiers:
   ant-design-vue: ^3.2.10
   axios: ^0.27.2
   consola: ^2.15.3
-  element-plus: ^2.2.11
+  element-plus: 2.2.10
   monaco-editor: ^0.34.0
   pinia: ^2.0.17
   sass: ^1.54.0
@@ -36,7 +36,7 @@ dependencies:
   '@vueuse/core': 9.0.0_vue@3.2.37
   ant-design-vue: 3.2.10_vue@3.2.37
   axios: 0.27.2
-  element-plus: 2.2.11_vue@3.2.37
+  element-plus: 2.2.10_vue@3.2.37
   monaco-editor: 0.34.0
   pinia: 2.0.17_j6bzmzd4ujpabbp5objtwxyjp4
   tdesign-vue-next: 0.18.1_vue@3.2.37
@@ -765,8 +765,8 @@ packages:
       tslib: 2.4.0
     dev: true
 
-  /element-plus/2.2.11_vue@3.2.37:
-    resolution: {integrity: sha512-JjOvz5DLBc4Jp9OHKXNcK/Cys4NX5/vxpZ+gYmH2V+pLkwJnyIOrNZ3QxfdyG6yE4+NkpoA6koEgUB7T+0Z5vQ==}
+  /element-plus/2.2.10_vue@3.2.37:
+    resolution: {integrity: sha512-hJ+LlbRN3POu4Idl1LXB+SHSWdi+wwmdsoDXdQT2ynGuwzZsMYiusOooYXyEsPlrizeLibdnNGNDx4TIjXQvUg==}
     peerDependencies:
       vue: ^3.2.0
     dependencies:

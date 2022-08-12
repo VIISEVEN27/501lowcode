@@ -233,7 +233,9 @@ const editableProps = (vcomponent: VComponent) => {
       node.parentElement?.classList.add("hover");
     },
     onDragstart: (e: DragEvent) => {
+      console.log('Component dragstart');
       const node = e.target as HTMLElement;
+      console.log('EditorContent [dragstart]:', node);
       e.dataTransfer?.setData(
         "text/indices",
         JSON.stringify(layerIndices(page, node.id))
@@ -243,6 +245,7 @@ const editableProps = (vcomponent: VComponent) => {
       appStore.activeComponent = "";
     },
     onDragover: (e: DragEvent) => {
+      console.log('Component dragover');
       const node = e.currentTarget as HTMLElement;
       if (node.classList.contains("root")) {
         dragNearEdge(node, e);
@@ -251,6 +254,7 @@ const editableProps = (vcomponent: VComponent) => {
       e.preventDefault();
     },
     onDrop: (e: DragEvent) => {
+      console.log('Component drop');
       const node = e.currentTarget as HTMLElement;
       if (node.classList.contains("root")) {
         const classes = [
@@ -290,6 +294,7 @@ const editableProps = (vcomponent: VComponent) => {
       }
     },
     onDragleave: (e: DragEvent) => {
+      console.log('Component dragleave');
       const node = e.currentTarget as HTMLElement;
       if (node.classList.contains("root")) {
         const classes = ["near-left", "near-top", "near-right", "near-bottom"];

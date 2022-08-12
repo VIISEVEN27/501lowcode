@@ -1,7 +1,13 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import Editor from "./views/Editor.vue";
+import Test from "./views/Test.vue";
 
 const routes: Array<RouteRecordRaw> = [
+  {
+    path: "/test/test",
+    name: "Test",
+    component: Test,
+  },
   {
     path: "/:id",
     name: "Editor",
@@ -11,7 +17,7 @@ const routes: Array<RouteRecordRaw> = [
 
 const router = createRouter({
   routes,
-  history: createWebHistory(),
+  history: createWebHistory(import.meta.env.BASE_URL),
 });
 
 export default router;

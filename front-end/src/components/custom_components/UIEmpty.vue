@@ -9,6 +9,7 @@ export default defineComponent({
 
 <script setup lang="ts">
 function dragenterHandler(e: DragEvent) {
+  console.log('UIEmpty dragenter');
   const node = e.target as HTMLElement;
   node.classList.add("dragover");
   const parent = node.parentElement;
@@ -20,6 +21,7 @@ function dragenterHandler(e: DragEvent) {
 }
 
 function dragleaveHandler(e: DragEvent) {
+  console.log('UIEmpty dragleave');
   const node = e.target as HTMLElement;
   node.classList.remove("dragover");
   const parent = node.parentElement;
@@ -27,11 +29,13 @@ function dragleaveHandler(e: DragEvent) {
 }
 
 function dragoverHandler(e: DragEvent) {
+  console.log('UIEmpty dragover');
   e.stopPropagation();
   e.preventDefault();
 }
 
 function clickHandler(e: MouseEvent) {
+  console.log('UIEmpty click');
   const node = e.currentTarget as HTMLElement;
   if (node.classList.contains("ui-empty")) {
     const appStore = useAppStore();

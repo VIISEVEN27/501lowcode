@@ -1,100 +1,56 @@
 <script setup lang="ts">
-import LibraryPanel from "@/components/component_library/LibraryPanel.vue";
-import TopArea from "@/components/component_library/TopArea.vue";
-import MainArea from "@/components/main_area/MainArea.vue";
+import TopArea from "@/components/top_area/TopArea.vue";
 import LeftArea from "@/components/left_area/LeftArea.vue";
+import MainArea from "@/components/main_area/MainArea.vue";
 import RightArea from "@/components/right_area/RightArea.vue";
-import {Page} from "@/entities/page"
-import {provide, reactive} from "vue"
-import {useRoute} from "vue-router"
+// import { Page } from "@/entities/page";
+// import { provide, reactive } from "vue";
+// import { useRoute } from "vue-router";
 
-const route = useRoute()
-const id = route.params.id as string
-const page = reactive(new Page(id))
-page.init()
+// const route = useRoute();
+// const id = route.params.id as string;
+// const page = reactive(new Page(id));
+// page.init();
 
-provide("page", page)
+// provide("page", page);
 </script>
 
 <template>
-  <div class="common-layout">
-    <el-container>
-      <el-header>
-        <TopArea />
-      </el-header>
-      <el-main>
-        <div class="workbench-body">
+  <el-container class="container">
+    <el-header class="header">
+      <TopArea />
+    </el-header>
+    <el-main class="main">
+      <el-row class="main-row">
+        <el-col :span="5">
           <LeftArea />
-        </div>
-        <MainArea class="main-area" />
-        <!-- <LibraryPanel /> -->
-        <!-- <div class="select-btn" @click="handleSelectPath">
-        <el-button type="primary">页面</el-button>
-        <el-button type="primary">页面>页面</el-button>
-
-        <el-button type="primary">页面>header>页面头部</el-button>
-        <el-button type="primary">header>页面头部>行列容器</el-button>
-        <el-button type="primary">页面头部>行列容器>行</el-button>
-        <el-button type="primary">行列容器>行>列</el-button>
-        <el-button type="primary">行>列>段落</el-button>
-        <el-button type="primary">列>段落>文本</el-button>
-
-        <el-button type="primary">页面>页面>区域</el-button>
-
-        <el-button type="primary">页面>区域>区块</el-button>
-        <el-button type="primary">区域>区块>行列容器</el-button>
-        <el-button type="primary">区块>行列容器>行</el-button>
-        <el-button type="primary">行列容器>行>列</el-button>
-      </div> -->
-        <el-scrollbar class="right-area">
+        </el-col>
+        <el-col :span="15">
+          <MainArea />
+        </el-col>
+        <el-col :span="4">
           <RightArea />
-        </el-scrollbar>
-      </el-main>
-    </el-container>
-  </div>
-  <!-- <LibraryPanel /> -->
+        </el-col>
+      </el-row>
+    </el-main>
+  </el-container>
 </template>
 
-<style lang="scss" scoped>
-.common-layout {
-  align-items: center;
+<style scoped>
+.container {
+  height: 100vh;
 }
 
-// .select-btn {
-//   position: absolute;
-//   top: 200px;
-//   right: 500px;
-//   display: flex;
-//   flex-direction: column;
-// }
+.header {
+  border-bottom: 1px solid var(--darker-border-color);
+}
 
-.el-container {
+.main {
+  padding: 0;
+  height: calc(100vh - 60px);
+}
+
+.main-row {
   height: 100%;
-  background-color: #edeff3;
-  .el-header,
-  .el-main {
-    padding-left: 0;
-    padding-right: 0;
-    box-sizing: border-box;
-  }
-  .el-main {
-    widows: 100vw;
-    display: flex;
-    padding-bottom: 0;
-    // justify-content: space-between;
-  }
-  .main-area {
-    flex: 1;
-    margin: 20px;
-    height: auto;
-  }
-  .workbench-body {
-    height: 100%;
-    width: 450px;
-  }
-  .right-area {
-    height: calc(100vh - 77px);
-    background: #fff;
-  }
 }
 </style>

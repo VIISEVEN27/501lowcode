@@ -4,24 +4,26 @@
  * @LastEditTime: 2022-08-02 14:10:11
 -->
 <script setup lang="ts">
-import SettingStyle from "@/components/setting_style/SettingStyle.vue";
-import NodeAttribute from "@/components/node_attributes/NodeAttribute.vue";
+// import SettingStyle from "@/components/setting_style/SettingStyle.vue";
+// import NodeAttribute from "@/components/node_attributes/NodeAttribute.vue";
 
-import { Ref, ref } from "vue";
+// import { ref } from "vue";
+import Inspector from "./Inspector.vue";
 
-// 菜单绑定变量
-let selectSetting = ref("1");
+// // 菜单绑定变量
+// let selectSetting = ref("1");
 
-// 选择菜单 ==> 属性 | 样式
-const handleSelectMenu = (index: string): void => {
-  // 更新
-  selectSetting.value = index;
-};
+// // 选择菜单 ==> 属性 | 样式
+// const handleSelectMenu = (index: string): void => {
+//   // 更新
+//   selectSetting.value = index;
+// };
 </script>
 
 <template>
   <div class="right-area">
-    <div class="path">
+    <Inspector />
+    <!-- <div class="path">
       <el-icon class="path-icon"><Calendar /></el-icon>
       <el-breadcrumb separator-icon="ArrowRight" class="settings-navigator">
         <el-breadcrumb-item>页面</el-breadcrumb-item>
@@ -44,27 +46,31 @@ const handleSelectMenu = (index: string): void => {
         <NodeAttribute v-show="selectSetting == '1'" />
         <SettingStyle v-show="selectSetting == '2'" />
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <style lang="scss" scoped>
 .right-area {
-  width: 400px;
-  height: auto;
-  // box-shadow: ;
-  background-color: #fff;
-  .path {
-    display: flex;
-    align-items: center;
-    height: 40px;
-    border-bottom: 1px solid var(--dark-border-color);
-    .path-icon {
-      margin: 0 15px;
-    }
-  }
-  .class-nav {
-    display: flex;
-  }
+  height: 100%;
 }
+
+// .right-area {
+//   width: 400px;
+//   height: auto;
+//   // box-shadow: ;
+//   background-color: #fff;
+//   .path {
+//     display: flex;
+//     align-items: center;
+//     height: 40px;
+//     border-bottom: 1px solid var(--dark-border-color);
+//     .path-icon {
+//       margin: 0 15px;
+//     }
+//   }
+//   .class-nav {
+//     display: flex;
+//   }
+// }
 </style>
