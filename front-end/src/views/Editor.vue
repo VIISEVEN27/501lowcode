@@ -25,7 +25,7 @@ import RightArea from "@/components/right_area/RightArea.vue";
         <el-col :span="5">
           <LeftArea />
         </el-col>
-        <el-col :span="15">
+        <el-col :span="15" class="middle-col">
           <MainArea />
         </el-col>
         <el-col :span="4">
@@ -48,6 +48,7 @@ import RightArea from "@/components/right_area/RightArea.vue";
 .main {
   padding: 0;
   height: calc(100vh - 60px);
+  overflow: hidden;
 }
 
 .main-row {

@@ -44,6 +44,7 @@ declare module '@vue/runtime-core' {
     ElSwitch: typeof import('element-plus/es')['ElSwitch']
     ElTabPane: typeof import('element-plus/es')['ElTabPane']
     ElTabs: typeof import('element-plus/es')['ElTabs']
+    ElTag: typeof import('element-plus/es')['ElTag']
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
     Inspector: typeof import('./src/components/right_area/Inspector.vue')['default']
     LeftArea: typeof import('./src/components/left_area/LeftArea.vue')['default']
@@ -76,6 +77,7 @@ declare module '@vue/runtime-core' {
     UILink: typeof import('./src/components/custom_components/UILink.vue')['default']
     UIPage: typeof import('./src/components/custom_components/UIPage.vue')['default']
     UIPageEdit: typeof import('./src/components/custom_components/UIPageEdit.vue')['default']
+    UITag: typeof import('./src/components/custom_components/UITag.vue')['default']
     UIText: typeof import('./src/components/custom_components/UIText.vue')['default']
     UIVideo: typeof import('./src/components/custom_components/UIVideo.vue')['default']
   }

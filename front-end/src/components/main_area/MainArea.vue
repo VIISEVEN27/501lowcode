@@ -20,7 +20,7 @@ function clickHandler(e: MouseEvent) {
 
 <template>
   <div class="main-area">
-    <EditorContent @click="clickHandler" />
+    <EditorContent class="editor-content" @click="clickHandler" />
   </div>
   <!-- <div class="lc-workbench">
     <el-container>
@@ -40,8 +40,12 @@ function clickHandler(e: MouseEvent) {
 
 <style lang="scss">
 .main-area {
-  height: 100%;
+  height: calc(100vh - 60px);
   padding: 1em;
+
+  > .editor-content {
+    overflow-y: scroll;
+  }
 
   .hover {
     outline: 1px dashed var(--hover-border-color);

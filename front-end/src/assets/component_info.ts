@@ -319,6 +319,180 @@ const componentInfo: Record<string, IComponent> = {
       },
     ],
   },
+  // 数据
+  ElTable: {
+    name: "Table",
+    zh: "表格",
+    editType: "block",
+    propSchema: [
+      {
+        name: "data",
+        desc: "显示的数据",
+        type: "array",
+        defaultValue: [
+          [1, 2, 3],
+          [4, 5, 6],
+        ],
+      },
+      {
+        name: "stripe",
+        desc: "是否为斑马纹",
+        type: "boolean",
+        defaultValue: false,
+      },
+      {
+        name: "border",
+        desc: "是否有纵向边框",
+        type: "boolean",
+        defaultValue: false,
+      },
+    ],
+  },
+  ElCalendar: {
+    name: "Calendar",
+    zh: "日历",
+    editType: "block",
+  },
+  ElAvatar: {
+    name: "Avatar",
+    zh: "头像",
+    editType: "block",
+    propSchema: [
+      {
+        name: "src",
+        desc: "图片 URL",
+        type: "string",
+        defaultValue: "/",
+      },
+      {
+        name: "fit",
+        desc: "如何适应容器",
+        type: "single_select",
+        candidates: ["fill", "contain", "cover", "none", "scale-down"],
+        defaultValue: "cover",
+      },
+    ],
+  },
+  UITag: {
+    name: "Tag",
+    zh: "标签",
+    editType: "block",
+    propSchema: [
+      {
+        name: "text",
+        desc: "文本",
+        type: "string",
+        defaultValue: "标签",
+      },
+      {
+        name: "type",
+        desc: "类型",
+        type: "single_select",
+        candidates: ["success", "info", "warning", "danger"],
+        defaultValue: "",
+      },
+      {
+        name: "round",
+        desc: "是否为圆形",
+        type: "boolean",
+        defaultValue: false,
+      },
+    ],
+  },
+  ElProgress: {
+    name: "Progress",
+    zh: "进度条",
+    editType: "block",
+    propSchema: [
+      {
+        name: "percentage",
+        desc: "百分比",
+        type: "number",
+        defaultValue: 50,
+      },
+      {
+        name: "type",
+        desc: "进度条类型",
+        type: "single_select",
+        candidates: ["line", "circle", "dashboard"],
+        defaultValue: "line",
+      },
+      {
+        name: "stroke-width",
+        desc: "进度条宽度",
+        type: "number",
+        defaultValue: 6,
+      },
+    ],
+  },
+  ElEmpty: {
+    name: "Empty",
+    zh: "空状态",
+    editType: "block",
+    propSchema: [
+      {
+        name: "description",
+        desc: "描述文字",
+        type: "string",
+        defaultValue: "内容为空",
+      },
+    ],
+  },
+  ElBadge: {
+    name: "Badge",
+    zh: "徽章",
+    editType: "block",
+  },
+  ElCard: {
+    name: "Card",
+    zh: "卡片",
+    editType: "block",
+  },
+  ElCarousel: {
+    name: "Carousel",
+    zh: "走马灯",
+    editType: "block",
+  },
+  ElCollapse: {
+    name: "Collapse",
+    zh: "折叠面板",
+    editType: "block",
+  },
+  ElDescriptions: {
+    name: "Descriptions",
+    zh: "描述列表",
+    editType: "block",
+  },
+  ElPagination: {
+    name: "Pagination",
+    zh: "分页",
+    editType: "block",
+  },
+  ElResult: {
+    name: "Result",
+    zh: "结果",
+    editType: "block",
+  },
+  ElSkeleton: {
+    name: "Skeleton",
+    zh: "骨架屏",
+    editType: "block",
+  },
+  ElTimeline: {
+    name: "Timeline",
+    zh: "时间线",
+    editType: "block",
+  },
+  ElTree: {
+    name: "Tree",
+    zh: "树形控件",
+    editType: "block",
+  },
+  ElTreeSelect: {
+    name: "TreeSelect",
+    zh: "树形选择",
+    editType: "block",
+  },
   // 导航
   ElPageHeader: {
     name: "PageHeader",
@@ -358,92 +532,6 @@ const componentInfo: Record<string, IComponent> = {
   ElAffix: {
     name: "Affix",
     zh: "固钉",
-    editType: "block",
-  },
-  // 数据
-  ElAvatar: {
-    name: "Avatar",
-    zh: "头像",
-    editType: "block",
-  },
-  ElBadge: {
-    name: "Badge",
-    zh: "徽章",
-    editType: "block",
-  },
-  ElCalendar: {
-    name: "Calendar",
-    zh: "日历",
-    editType: "block",
-  },
-  ElCard: {
-    name: "Card",
-    zh: "卡片",
-    editType: "block",
-  },
-  ElCarousel: {
-    name: "Carousel",
-    zh: "走马灯",
-    editType: "block",
-  },
-  ElCollapse: {
-    name: "Collapse",
-    zh: "折叠面板",
-    editType: "block",
-  },
-  ElDescriptions: {
-    name: "Descriptions",
-    zh: "描述列表",
-    editType: "block",
-  },
-  ElEmpty: {
-    name: "Empty",
-    zh: "空状态",
-    editType: "block",
-  },
-  ElPagination: {
-    name: "Pagination",
-    zh: "分页",
-    editType: "block",
-  },
-  ElProgress: {
-    name: "Progress",
-    zh: "进度条",
-    editType: "block",
-  },
-  ElResult: {
-    name: "Result",
-    zh: "结果",
-    editType: "block",
-  },
-  ElSkeleton: {
-    name: "Skeleton",
-    zh: "骨架屏",
-    editType: "block",
-  },
-  ElTable: {
-    name: "Table",
-    zh: "表格",
-    editType: "block",
-  },
-  ElTag: {
-    name: "Tag",
-    zh: "标签",
-    editType: "block",
-  },
-  ElTimeline: {
-    name: "Timeline",
-    zh: "时间线",
-    editType: "block",
-  },
-  ElTree: {
-    name: "Tree",
-    zh: "树形控件",
-    editType: "block",
-  },
-  ElTreeSelect: {
-    name: "TreeSelect",
-    zh: "树形选择",
     editType: "block",
   },
   // 表单
