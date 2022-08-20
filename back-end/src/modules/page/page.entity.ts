@@ -1,14 +1,15 @@
-export interface Component {
+export interface IComponent {
     name: string
     type: string
     props?: Record<string, any>
-    style?: Record<string, string>
-    slots?: (string | Component)[]
+    styles?: Record<string, any>
+    events?: Record<string, string>
+    children?: IComponent[]
 }
 
-export interface Page {
+export interface IPage {
     id?: string
     title: string
-    body: Component[]
+    body: IComponent[]
     time: Date
 }

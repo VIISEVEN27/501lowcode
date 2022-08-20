@@ -1,75 +1,35 @@
-import {Controller, Get, Logger, Query} from "@nestjs/common"
-import {Page} from "./page.entity"
+import {Controller, Get, Logger, Query, Res} from "@nestjs/common"
 import {PageService} from "./page.service"
+import {PassThrough} from "stream"
 
-@Controller("page")
+@Controller()
 export class PageController {
     private readonly logger = new Logger(PageController.name)
 
     constructor(private readonly service: PageService) {
     }
 
-    @Get()
-    getPage(@Query("id") id: string) {
-        const page: Page = {
-            id: id,
-            title: "测试页面",
-            time: new Date(),
-            body: [{
-                name: "form0",
-                type: "Form",
-                slots: [
-                    {
-                        name: "form-item0",
-                        type: "FormItem",
-                        slots: [{
-                            name: "checkbox0",
-                            type: "Checkbox",
-                            style: {color: "red"},
-                            slots: ["是否勾选"],
-                        }],
-                    },
-                    {
-                        name: "form-item1",
-                        type: "FormItem",
-                        props: {label: "选择颜色"},
-                        slots: [{
-                            name: "color-picker0",
-                            type: "ColorPicker",
-                        }],
-                    },
-                    {
-                        name: "form-item2",
-                        type: "FormItem",
-                        props: {label: "选择日期"},
-                        slots: [{
-                            name: "date-picker0",
-                            type: "DatePicker",
-                        }],
-                    },
-                    {
-                        name: "form-item3",
-                        type: "FormItem",
-                        props: {label: "输入文本"},
-                        slots: [{
-                            name: "input0",
-                            type: "Input",
-                            props: {placeholder: "请输入内容", maxLength: 100, minLength: 10, showWordLimit: true},
-                        }],
-                    },
-                    {
-                        name: "form-item4",
-                        type: "FormItem",
-                        props: {label: "输入数字"},
-                        slots: [{
-                            name: "input-number0",
-                            type: "InputNumber",
-                            props: {placeholder: "请输入数字", precision: 2},
-                        }],
-                    },
-                ],
-            }],
-        }
-        return page
+    @Get("new")
+    async create() {
+        return await this.service.create()
+    }
+
+    @Get("page")
+    async query(@Query("id") id: string) {
+        return await this.service.query(id)
+    }
+
+    @Get("download")
+    async download(@Query("id") id: string, @Res() res) {
+        const page = await this.service.query(id)
+        const buffer = await this.service.generate(page)
+        const stream = new PassThrough()
+        stream.end(buffer)
+        res.setHeader("Content-Type", "application/octet-stream")
+        res.setHeader(
+            "Content-Disposition",
+            `attachment; filename=${encodeURIComponent(page.title + ".zip")}`,
+        )
+        stream.pipe(res)
     }
 }

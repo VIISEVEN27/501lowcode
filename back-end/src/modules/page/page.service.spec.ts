@@ -17,7 +17,8 @@ describe("PageService", () => {
 
     it("should create a document", async () => {
         expect(async () => {
-            id = await service.create()
+            const page = await service.create()
+            id = page.id
             console.log(id)
         }).not.toThrow()
     })
