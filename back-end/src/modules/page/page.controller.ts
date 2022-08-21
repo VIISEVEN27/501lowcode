@@ -1,6 +1,7 @@
-import {Controller, Get, Logger, Query, Res} from "@nestjs/common"
+import {Body, Controller, Get, Logger, Post, Query, Res} from "@nestjs/common"
 import {PageService} from "./page.service"
 import {PassThrough} from "stream"
+import {IPage} from "./page.entity"
 
 @Controller()
 export class PageController {
@@ -17,6 +18,17 @@ export class PageController {
     @Get("page")
     async query(@Query("id") id: string) {
         return await this.service.query(id)
+    }
+
+    @Post("save")
+    async save(@Body() page: IPage) {
+        try {
+            await this.service.update(page)
+            return {success: true, msg: "保存成功"}
+        } catch (e) {
+            this.logger.error(e)
+            return {success: false, msg: "保存失败"}
+        }
     }
 
     @Get("download")
