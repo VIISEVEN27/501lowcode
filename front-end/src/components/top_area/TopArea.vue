@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import { Icon } from "@iconify/vue";
-import { ref } from "vue";
-
+import { ref, watch } from "vue";
+import { InfoFilled } from '@element-plus/icons-vue';
+import { cancelLast,restoreLast } from './UndoLogic';
 const radioDevice = ref("pc");
+
+
 </script>
 
 <template>
@@ -21,13 +24,41 @@ const radioDevice = ref("pc");
       <el-col :span="12">
         <div class="top-right-area">
           <!-- 撤销-->
-          <el-button>
-            <Icon icon="akar-icons:arrow-forward-thick" />
-          </el-button>
+          <el-popconfirm
+            confirm-button-text="确定"
+            cancel-button-text="取消"
+            :icon="InfoFilled"
+            icon-color="#626AEF"
+            title="确认要撤销上一步的操作吗？"
+            @confirm="cancelLast()"
+          >
+            <template #reference>
+              <el-button>
+                  撤销
+                  <Icon icon="akar-icons:arrow-back-thick" />
+              </el-button>
+            </template>
+          </el-popconfirm>
+          
+          
           <!-- 恢复 -->
-          <el-button>
-            <Icon icon="akar-icons:arrow-back-thick" />
-          </el-button>
+          <el-popconfirm
+            confirm-button-text="确定"
+            cancel-button-text="取消"
+            :icon="InfoFilled"
+            icon-color="#626AEF"
+            title="确认要恢复到撤销前的状态吗？"
+            @confirm="restoreLast()"
+          >
+            <template #reference>
+              <el-button>
+                  恢复
+                  <Icon icon="akar-icons:arrow-forward-thick" />
+              </el-button>
+            </template>
+          </el-popconfirm>
+          
+
           <el-button>异步加载资源</el-button>
           <el-button>保存到本地</el-button>
           <el-button>重置页面</el-button>
