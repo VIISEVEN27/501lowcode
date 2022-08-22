@@ -3,9 +3,17 @@ import { Icon } from "@iconify/vue";
 import { ref, watch } from "vue";
 import { InfoFilled } from '@element-plus/icons-vue';
 import { cancelLast,restoreLast } from './UndoLogic';
+import {useAppStore} from "@/stores/app"
+import axios from "axios"
+
+
 const radioDevice = ref("pc");
 
+const appStore = useAppStore();
 
+async function generate() {
+    await axios.get("/api/download", {params: {id: appStore.id}})
+}
 </script>
 
 <template>
@@ -62,7 +70,7 @@ const radioDevice = ref("pc");
           <el-button>异步加载资源</el-button>
           <el-button>保存到本地</el-button>
           <el-button>重置页面</el-button>
-          <el-button type="primary">出码</el-button>
+          <el-button type="primary" @click="generate">出码</el-button>
           <el-button type="primary">预览</el-button>
         </div>
       </el-col>

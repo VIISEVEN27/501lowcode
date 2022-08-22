@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import { useAppStore } from "@/stores/app.js";
+import {storeToRefs} from "pinia"
 import { computed, ref } from "vue";
-import { searchVcomponent, removeVcomponentById } from "../main_area/EditorContent";
 import componentInfo from "@/assets/component_info.js";
 import CodeEditor from "./CodeEditor.vue";
 import * as monaco from "monaco-editor";
 import { ElMessage } from "element-plus";
 
 const appStore = useAppStore();
-const vcomponent = computed(() => searchVcomponent(appStore.activeComponent));
+// const {activeComponent} = storeToRefs((appStore))
+const vcomponent = computed(() => appStore.searchVcomponent(appStore.activeComponent));
 const propSchema = computed(() => {
   if (!vcomponent.value) {
     return undefined;
@@ -58,6 +59,8 @@ function saveEventHandler(name: string) {
   });
   showCodeEditor.value = false;
 }
+
+const removeVcomponentById = appStore.removeVcomponentById
 </script>
 
 <template>

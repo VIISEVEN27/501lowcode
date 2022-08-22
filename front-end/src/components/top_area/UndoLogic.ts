@@ -1,5 +1,6 @@
-import { setPage }  from '@/components/main_area/EditorContent';
+// import { setPage }  from '@/components/main_area/EditorContent';
 import  createRecord   from '@/components/main_area/PageStack';
+import {useAppStore} from "@/stores/app"
 
 export let record = createRecord();
 
@@ -12,7 +13,9 @@ export function cancelLast() {
     console.log("cancelLast"+record.undoEmpty());
     if(record.undoEmpty())
       return ;
-    setPage( record.getTopValueOfUndo()) ;
+    // setPage( record.getTopValueOfUndo()) ;
+    const appStore = useAppStore()
+    appStore.page = record.getTopValueOfUndo()
     record.undoRecord();
 }
   

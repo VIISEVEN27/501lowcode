@@ -47,7 +47,7 @@ export class PageService {
     // }
 
     async update(page: IPage) {
-        await this.collection.updateOne({_id: new ObjectId(page.id!)}, page)
+        await this.collection.updateOne({_id: new ObjectId(page.id!)}, {$set: page})
     }
 
     async generate(page: IPage) {

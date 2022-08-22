@@ -50,7 +50,6 @@ declare module '@vue/runtime-core' {
     RowAndColumnAttribute: typeof import('./src/components/node_attributes/RowAndColumnAttribute.vue')['default']
     RowAttribute: typeof import('./src/components/node_attributes/RowAttribute.vue')['default']
     SettingStyle: typeof import('./src/components/setting_style/SettingStyle.vue')['default']
-    Test: typeof import('./src/components/main_area/test.vue')['default']
     TopArea: typeof import('./src/components/top_area/TopArea.vue')['default']
     TopAttribute: typeof import('./src/components/node_attributes/TopAttribute.vue')['default']
     UIBlock: typeof import('./src/components/custom_components/UIBlock.vue')['default']
