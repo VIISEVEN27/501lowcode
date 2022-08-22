@@ -2,7 +2,7 @@ import {Injectable, Logger} from "@nestjs/common"
 import {ObjectId} from "mongodb"
 import {resolve} from "path"
 import {MongoDB} from "../../db/mongo.db"
-import {Operation} from "../operation/operation.entity"
+// import {Operation} from "../operation/operation.entity"
 import {IComponent, IPage} from "./page.entity"
 import * as fs from "fs"
 import * as JSZip from "jszip"
@@ -23,27 +23,31 @@ export class PageService {
         return await this.collection.findOne<IPage>({_id: new ObjectId(id)})
     }
 
-    async update(operations: Operation[], id: string) {
-        this.logger.log(`更新页面：共${operations.length}条记录`)
-        for (let operation of operations) {
-            if (operation.type === "insert") {
-                const lastDotIndex = operation.key.lastIndexOf(".")
-                const pushOperation = new Map<string, any>()
-                pushOperation.set(operation.key.substring(0, lastDotIndex), {
-                    $each: [operation.value],
-                    $position: parseInt(operation.key.substring(lastDotIndex + 1)),
-                })
-                await this.collection.updateOne({_id: new ObjectId(id)}, {$push: pushOperation})
-            } else if (operation.type === "update") {
-                const setOperation = new Map<string, any>()
-                setOperation.set(operation.key, operation.value)
-                await this.collection.updateOne({_id: new ObjectId(id)}, {$set: setOperation})
-            } else if (operation.type === "delete") {
-                const pullOperation = new Map<string, any>()
-                pullOperation.set(operation.key, operation.value)
-                await this.collection.updateOne({_id: new ObjectId(id)}, {$pull: pullOperation})
-            }
-        }
+    // async update(operations: Operation[], id: string) {
+    //     this.logger.log(`更新页面：共${operations.length}条记录`)
+    //     for (let operation of operations) {
+    //         if (operation.type === "insert") {
+    //             const lastDotIndex = operation.key.lastIndexOf(".")
+    //             const pushOperation = new Map<string, any>()
+    //             pushOperation.set(operation.key.substring(0, lastDotIndex), {
+    //                 $each: [operation.value],
+    //                 $position: parseInt(operation.key.substring(lastDotIndex + 1)),
+    //             })
+    //             await this.collection.updateOne({_id: new ObjectId(id)}, {$push: pushOperation})
+    //         } else if (operation.type === "update") {
+    //             const setOperation = new Map<string, any>()
+    //             setOperation.set(operation.key, operation.value)
+    //             await this.collection.updateOne({_id: new ObjectId(id)}, {$set: setOperation})
+    //         } else if (operation.type === "delete") {
+    //             const pullOperation = new Map<string, any>()
+    //             pullOperation.set(operation.key, operation.value)
+    //             await this.collection.updateOne({_id: new ObjectId(id)}, {$pull: pullOperation})
+    //         }
+    //     }
+    // }
+
+    async update(page: IPage) {
+        await this.collection.updateOne({_id: new ObjectId(page.id!)}, page)
     }
 
     async generate(page: IPage) {

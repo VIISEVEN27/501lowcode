@@ -11,7 +11,7 @@ export function multiDebounce(delay: number, maxDelay?: number) {
                 if (lastInvokeTimeMap.get(key) === undefined) {
                     lastInvokeTimeMap.set(key, Date.now())
                 }
-                if (maxDelay !== undefined && Date.now() - lastInvokeTimeMap.get(key)!! >= maxDelay) {
+                if (maxDelay !== undefined && Date.now() - lastInvokeTimeMap.get(key) >= maxDelay) {
                     setTimeout(() => {
                         descriptor.value.call(this, ...args)
                         lastInvokeTimeMap.set(key, Date.now())
