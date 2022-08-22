@@ -7,9 +7,8 @@ export interface IComponent {
     children?: IComponent[]
 }
 
-export interface IPage {
+export interface IPage extends IComponent{
     id?: string
     title: string
-    body: IComponent[]
     time: Date
 }
