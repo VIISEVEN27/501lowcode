@@ -13,6 +13,7 @@ import monacoEditorPlugin from 'vite-plugin-monaco-editor';
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
+    host: "0.0.0.0",
     proxy: {
       "/api": {
         target: "http://139.224.220.27:3000/",
