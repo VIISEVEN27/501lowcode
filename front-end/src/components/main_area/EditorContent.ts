@@ -1,12 +1,17 @@
+import { VComponent } from './EditorContent';
 import {
+  Component,
   defineComponent,
   h,
   reactive,
   resolveComponent,
+  watch,
   type VNode,
 } from "vue";
 import componentInfo from "@/assets/component_info";
 import { useAppStore } from "@/stores/app";
+import { addReco } from '@/components/top_area/UndoLogic';
+
 
 export class VComponent {
   name: string;
@@ -16,6 +21,7 @@ export class VComponent {
   events?: Record<string, Function> = {};
   children?: VComponent[];
 
+  /** 构造函数，传入组件名称即可 */
   constructor(vcomponentType: string) {
     this.name = getUniqueName(vcomponentType);
     this.type = vcomponentType;
@@ -23,13 +29,22 @@ export class VComponent {
 }
 
 // 假设是从后端请求到的页面 JSON
-const page: VComponent = reactive({
+export let page: VComponent = reactive({
   name: "home",
   type: "UIPage",
   props: {},
   styles: {},
 });
 
+export function setPage(newPage:VComponent) {
+  page = newPage;
+}
+
+/**
+ * 得到全部组件名称
+ * @param vcomponent 传入vcomponent组件
+ * @returns Set<string>:string类型的集合，递归将所有组件的name全部放入该set中
+ */
 function generateNameCache(vcomponent: VComponent): Set<string> {
   if (!vcomponent.children) {
     return new Set();
@@ -46,8 +61,14 @@ function generateNameCache(vcomponent: VComponent): Set<string> {
   return set;
 }
 
+/** 组件名称集 */
 const nameSet = generateNameCache(page);
 
+/**
+ * 元素更接近顶部还是底部？在node的classList中添加元素
+ * @param node：html元素
+ * @param e：拖动事件
+ */
 function blockNearEdge(node: HTMLElement, e: DragEvent) {
   const topDist = e.offsetY,
     bottomDist = node.clientHeight - e.offsetY;
@@ -56,6 +77,11 @@ function blockNearEdge(node: HTMLElement, e: DragEvent) {
   node.classList.add(topDist < bottomDist ? "near-top" : "near-bottom");
 }
 
+/**
+ * 元素更接近左侧还是右侧？在node的classList中添加元素
+ * @param node：html元素
+ * @param e：拖动事件
+ */
 function inlineNearEdge(node: HTMLElement, e: DragEvent) {
   const leftDist = e.offsetX,
     rightDist = node.clientWidth - e.offsetX;
@@ -63,6 +89,7 @@ function inlineNearEdge(node: HTMLElement, e: DragEvent) {
   node.classList.remove("near-right");
   node.classList.add(leftDist < rightDist ? "near-left" : "near-right");
 }
+
 
 function layerIndices(vcomponent: VComponent, id: string): number[] {
   if (!vcomponent.children) {
@@ -84,9 +111,15 @@ function layerIndices(vcomponent: VComponent, id: string): number[] {
   return [];
 }
 
+/**
+ * 
+ * @param id 
+ * @returns 
+ */
 function getIndicesById(id: string): number[] {
   return layerIndices(page, id);
 }
+
 
 function searchVcomponentDeep(
   vcomponent: VComponent,
@@ -107,6 +140,11 @@ function searchVcomponentDeep(
   return undefined;
 }
 
+/**
+ * 得到vcomponent深度
+ * @param id 字符串类型
+ * @returns 整数类型的深度
+ */
 export function searchVcomponent(id: string): VComponent | undefined {
   return searchVcomponentDeep(page, id);
 }
@@ -198,6 +236,7 @@ function removeVcomponent(indices: number[]): VComponent {
   return result;
 }
 
+/** 通过vcomponent的name删除 */
 export function removeVcomponentById(id: string): VComponent {
   const indices = getIndicesById(id);
   nameSet.delete(id);
@@ -373,3 +412,20 @@ export default defineComponent({
     return renderDeep(page);
   },
 });
+
+
+/**
+ * 使用watch函数监听响应式对象page的变化
+ */
+ watch(
+  () => page,
+  (newValue, oldValue) => {
+    //每次page更新，则保存原来的page数据
+    console.log("change"+newValue);
+    addReco(newValue);
+  },
+  { deep: true }
+)
+
+
+

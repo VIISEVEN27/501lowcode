@@ -80,6 +80,7 @@ function saveEventHandler(name: string) {
         </template>
       </el-popconfirm>
     </div>
+
     <el-tabs type="border-card" class="tabs">
       <el-tab-pane label="属性">
         <div v-if="!vcomponent || !propSchema">没有可以设置的属性</div>
@@ -118,6 +119,7 @@ function saveEventHandler(name: string) {
           <el-divider />
         </div>
       </el-tab-pane>
+
       <el-tab-pane label="样式">
         <div v-if="!vcomponent || !styleSchema">没有可以设置的样式</div>
         <div v-else v-for="schema in styleSchema" class="form-item">
@@ -160,6 +162,7 @@ function saveEventHandler(name: string) {
           <el-divider />
         </div>
       </el-tab-pane>
+      
       <el-tab-pane label="事件">
         <div v-if="!vcomponent || !eventSchema">没有可以设置的事件</div>
         <div v-else v-for="schema in eventSchema" class="form-item">
@@ -196,6 +199,7 @@ function saveEventHandler(name: string) {
         </div>
       </el-tab-pane>
     </el-tabs>
+
   </div>
 </template>
 
