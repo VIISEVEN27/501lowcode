@@ -32,39 +32,39 @@ async function generate() {
       <el-col :span="12">
         <div class="top-right-area">
           <!-- 撤销-->
-          <el-popconfirm
-            confirm-button-text="确定"
-            cancel-button-text="取消"
-            :icon="InfoFilled"
-            icon-color="#626AEF"
-            title="确认要撤销上一步的操作吗？"
-            @confirm="cancelLast()"
-          >
-            <template #reference>
-              <el-button>
+<!--          <el-popconfirm-->
+<!--            confirm-button-text="确定"-->
+<!--            cancel-button-text="取消"-->
+<!--            :icon="InfoFilled"-->
+<!--            icon-color="#626AEF"-->
+<!--            title="确认要撤销上一步的操作吗？"-->
+<!--            @confirm="cancelLast()"-->
+<!--          >-->
+<!--            <template #reference>-->
+              <el-button @click="cancelLast">
                   撤销
                   <Icon icon="akar-icons:arrow-back-thick" />
               </el-button>
-            </template>
-          </el-popconfirm>
+<!--            </template>-->
+<!--          </el-popconfirm>-->
           
           
           <!-- 恢复 -->
-          <el-popconfirm
-            confirm-button-text="确定"
-            cancel-button-text="取消"
-            :icon="InfoFilled"
-            icon-color="#626AEF"
-            title="确认要恢复到撤销前的状态吗？"
-            @confirm="restoreLast()"
-          >
-            <template #reference>
-              <el-button>
+<!--          <el-popconfirm-->
+<!--            confirm-button-text="确定"-->
+<!--            cancel-button-text="取消"-->
+<!--            :icon="InfoFilled"-->
+<!--            icon-color="#626AEF"-->
+<!--            title="确认要恢复到撤销前的状态吗？"-->
+<!--            @confirm="restoreLast()"-->
+<!--          >-->
+<!--            <template #reference>-->
+              <el-button @click="restoreLast">
                   恢复
                   <Icon icon="akar-icons:arrow-forward-thick" />
               </el-button>
-            </template>
-          </el-popconfirm>
+<!--            </template>-->
+<!--          </el-popconfirm>-->
           
 
           <el-button>异步加载资源</el-button>

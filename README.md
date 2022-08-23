@@ -10,8 +10,8 @@
 - [x] 支持修改组件的属性、样式
 - [x] 可以通过绑定事件实现组件的基本交互
 - [x] 支持生成和下载页面的源工程文件
+- [x] 页面将自动保存到后端
 - [ ] 实现操作的撤销和重做
-- [ ] 页面将自动保存到后端
 #### 架构
 ![架构设计](https://github.com/VIISEVEN27/501lowcode/blob/master/images/架构设计.png)
 
@@ -43,3 +43,4 @@ pnpm run dev
 
 ### 三、运行结果
 ![前端界面](https://github.com/VIISEVEN27/501lowcode/blob/master/images/前端界面.PNG)
+DEMO地址: http://139.224.220.27:5137/

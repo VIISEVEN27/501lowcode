@@ -14,6 +14,7 @@ import monacoEditorPlugin from "vite-plugin-monaco-editor";
 export default defineConfig(({ command }) => ({
   base: command === "build" ? "/" : "/",
   server: {
+    host: "0.0.0.0",
     proxy: {
       "/api": {
         target: "http://139.224.220.27:3000/",

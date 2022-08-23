@@ -14,13 +14,14 @@ export class PageService {
 
     async create() {
         const newPage: IPage = {title: "未命名页面", name: "root", type: "UIPage", children: [], time: new Date()}
-        const result = await this.collection.insertOne(newPage)
+        const result = await this.collection.insertOne({data: newPage})
         newPage.id = result.insertedId.toHexString()
         return newPage
     }
 
     async query(id: string) {
-        return await this.collection.findOne<IPage>({_id: new ObjectId(id)})
+        const document = await this.collection.findOne<{ _id: ObjectId, data: IPage }>({_id: new ObjectId(id)})
+        return document.data
     }
 
     // async update(operations: Operation[], id: string) {
@@ -47,7 +48,7 @@ export class PageService {
     // }
 
     async update(page: IPage) {
-        await this.collection.updateOne({_id: new ObjectId(page.id!)}, {$set: page})
+        await this.collection.updateOne({_id: new ObjectId(page.id!)}, {$set: {data: page}})
     }
 
     async generate(page: IPage) {
