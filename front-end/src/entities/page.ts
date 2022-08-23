@@ -1,3 +1,4 @@
+export {}
 // import {Component, Factory, IComponent} from "@/entities/component"
 // import axios from "axios"
 // import {h} from "vue"
