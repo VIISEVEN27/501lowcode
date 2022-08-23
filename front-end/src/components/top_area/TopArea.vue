@@ -12,7 +12,17 @@ const radioDevice = ref("pc");
 const appStore = useAppStore();
 
 async function generate() {
-    await axios.get("download", {params: {id: appStore.id}})
+    // await axios.get("/api/download", {
+    //     params: {id: appStore.id},
+    //     headers: {"accept": "application/octet-stream"},
+    //     responseType: "blob",
+    // })
+    const a = document.createElement("a")
+    a.href = "/api/download?id=" + appStore.id
+    a.style.display = "none"
+    document.body.appendChild(a)
+    a.click()
+    document.body.removeChild(a)
 }
 </script>
 

@@ -82,8 +82,9 @@ function generateDeep(page: IPage) {
             functions.push(`function ${newName}${body}`)
             return `@${event}="${newName}"`
         }).join(" ")
-        const slot = component.children ? component.children.map((child) => generate(child)).join("\n\t") : ""
-        return `<${type} ${props} :style="${style}" ${events}>\n\t${slot}\n</${type}>`
+        const slot = component.children?.length > 0 ?
+            `\n${component.children.map((child) => generate(child)).join("\n\t")}\n` : ""
+        return `<${type} ${props} :style="${style}" ${events}>${slot}</${type}>`
     }
 
     return `<template>
