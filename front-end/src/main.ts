@@ -1,8 +1,3 @@
-/*
- * @Author: yky
- * @Date: 2022-07-30 08:51:36
- * @LastEditTime: 2022-08-02 13:59:39
- */
 import { createApp } from "vue";
 import App from "./App.vue";
 
@@ -22,7 +17,7 @@ import "./assets/base.css";
 
 import axios from "axios";
 
-axios.defaults.baseURL = "http://139.224.220.27:3000/";
+// axios.defaults.baseURL = "http://139.224.220.27:3000/";
 
 const app = createApp(App);
 app.use(router);

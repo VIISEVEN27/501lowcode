@@ -43,7 +43,7 @@ export default defineComponent({
     const router = useRouter()
     const id = route.params.id as string
     if (!id) {
-      axios.get("new").then((resp) => {
+      axios.get("/api/new").then((resp) => {
         const newId = resp.data.id as string
         router.push("/" + newId)
       })

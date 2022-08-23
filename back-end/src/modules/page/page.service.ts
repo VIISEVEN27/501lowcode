@@ -21,7 +21,9 @@ export class PageService {
 
     async query(id: string) {
         const document = await this.collection.findOne<{ _id: ObjectId, data: IPage }>({_id: new ObjectId(id)})
-        return document.data
+        const page = document.data
+        page.id = id
+        return page
     }
 
     // async update(operations: Operation[], id: string) {
