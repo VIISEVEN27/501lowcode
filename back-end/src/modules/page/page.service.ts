@@ -69,19 +69,27 @@ function parseFunction(func: string) {
     return {name, body}
 }
 
+function stringifyObject(obj: any) {
+    return JSON.stringify(obj).replace(/"/g, "\'")
+}
+
 function generateDeep(page: IPage) {
     const functions: string[] = []
 
     function generate(component: IComponent): string {
         const type = component.type
-        const props = Object.entries(component.props).map(([key, value]) => `:${key}="${JSON.stringify(value)}"`).join(" ")
-        const style = JSON.stringify(component.styles)
-        const events = Object.entries(component.events).map(([event, func]) => {
-            const {name, body} = parseFunction(func)
-            const newName = `${name}_${component.name}`
-            functions.push(`function ${newName}${body}`)
-            return `@${event}="${newName}"`
-        }).join(" ")
+        const props = Object.entries(component.props)
+            .map(([key, value]) => `:${key}="${stringifyObject(value)}"`)
+            .join(" ")
+        const style = stringifyObject(component.styles)
+        const events = Object.entries(component.events)
+            .map(([event, func]) => {
+                const {name, body} = parseFunction(func)
+                const newName = `${name}_${component.name}`
+                functions.push(`function ${newName}${body}`)
+                return `@${event}="${newName}"`
+            })
+            .join(" ")
         const slot = component.children?.length > 0 ?
             `\n${component.children.map((child) => generate(child)).join("\n\t")}\n` : ""
         return `<${type} ${props} :style="${style}" ${events}>${slot}</${type}>`
