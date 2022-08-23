@@ -24,7 +24,7 @@ export class Page {
     }
 
     async init() {
-        const resp = await axios.get("/api/page", {params: {id: this.id}})
+        const resp = await axios.get("page", {params: {id: this.id}})
         const {title, body, time} = resp.data
         this.title = title
         this.body = body.map((item: IComponent) => Factory(item))
@@ -50,6 +50,7 @@ export class Page {
         }
         
         function getComponent(componentType: string) {
+            // @ts-ignore
             const components = Object.values(componentInfo).reduce((pre, cur) => pre.concat(cur), []);
             for (const value of components) {
                 if (value["name"] === componentType) {
@@ -107,6 +108,7 @@ export class Page {
                         if (node.classList.contains('top') || node.classList.contains('bottom')) {
                             const classes = node.classList.contains('top') ? "top" : "bottom";
                             console.log(node.id, classes);
+                            // @ts-ignore
                             insertComponent(node.id, component, classes)
                         }
                         node.classList.remove('top');

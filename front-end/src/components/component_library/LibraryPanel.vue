@@ -37,9 +37,11 @@ const loadAll = () => {
   }));
 };
 
-const handleSelect = (item: RestaurantItem) => {
+const handleSelect = (item: { value: RestaurantItem }) => {
   Object.keys(componentLibrary).forEach((category) => {
-    if (componentLibrary[category].includes(item.id)) {
+    if (
+      componentLibrary[category as "布局" | "基础" | "数据"].includes(item.value.id)
+    ) {
       state.value = category;
     }
   });

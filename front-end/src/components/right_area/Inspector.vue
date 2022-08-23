@@ -60,7 +60,9 @@ function saveEventHandler(name: string) {
   showCodeEditor.value = false;
 }
 
-const removeVcomponentById = appStore.removeVcomponentById
+const removeVcomponentById = (name: string) => {
+  appStore.removeVcomponentById(name);
+}
 </script>
 
 <template>
@@ -94,7 +96,7 @@ const removeVcomponentById = appStore.removeVcomponentById
           <el-input-number
             v-if="schema.type === 'number'"
             :modelValue="vcomponent.props![schema.name] || schema.defaultValue"
-            @update:modelValue="(newValue: number) => vcomponent!.props![schema.name] = newValue"
+            @update:modelValue="(newValue: number | undefined) => vcomponent!.props![schema.name] = newValue"
           />
           <el-input
             v-else-if="schema.type === 'string'"
@@ -105,7 +107,7 @@ const removeVcomponentById = appStore.removeVcomponentById
           <el-switch
             v-else-if="schema.type === 'boolean'"
             :modelValue="vcomponent.props![schema.name] || schema.defaultValue"
-            @update:modelValue="(newValue: boolean) => vcomponent!.props![schema.name] = newValue"
+            @update:modelValue="(newValue: boolean | string | number) => vcomponent!.props![schema.name] = newValue"
           />
           <el-select
             v-else-if="schema.type.endsWith('_select')"
@@ -132,7 +134,7 @@ const removeVcomponentById = appStore.removeVcomponentById
           <el-input-number
             v-if="schema.type === 'number'"
             :modelValue="vcomponent.styles![schema.name] || currentStyleValue(schema.name)"
-            @update:modelValue="(newValue: number) => vcomponent!.styles![schema.name] = newValue"
+            @update:modelValue="(newValue: number | undefined) => vcomponent!.styles![schema.name] = newValue"
           />
           <el-input
             v-else-if="schema.type === 'string'"
@@ -143,7 +145,7 @@ const removeVcomponentById = appStore.removeVcomponentById
           <el-switch
             v-else-if="schema.type === 'boolean'"
             :modelValue="vcomponent.styles![schema.name] || currentStyleValue(schema.name)"
-            @update:modelValue="(newValue: boolean) => vcomponent!.styles![schema.name] = newValue"
+            @update:modelValue="(newValue: boolean | string | number) => vcomponent!.styles![schema.name] = newValue"
           />
           <el-select
             v-else-if="schema.type.endsWith('_select')"

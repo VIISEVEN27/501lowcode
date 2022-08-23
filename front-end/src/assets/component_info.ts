@@ -384,13 +384,13 @@ const componentInfo: Record<string, IComponent> = {
         type: "string",
         defaultValue: "标签",
       },
-      {
-        name: "type",
-        desc: "类型",
-        type: "single_select",
-        candidates: ["success", "info", "warning", "danger"],
-        defaultValue: "",
-      },
+      // {
+      //   name: "type",
+      //   desc: "类型",
+      //   type: "single_select",
+      //   candidates: ["success", "info", "warning", "danger"],
+      //   defaultValue: "",
+      // },
       {
         name: "round",
         desc: "是否为圆形",

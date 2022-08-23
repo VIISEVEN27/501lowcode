@@ -12,10 +12,10 @@ defineProps({
     type: String,
     default: "标签",
   },
-  type: {
-    type: String,
-    default: "",
-  },
+  // type: {
+  //   type: String,
+  //   default: "",
+  // },
   round: {
     type: Boolean,
     default: false,
@@ -24,5 +24,5 @@ defineProps({
 </script>
 
 <template>
-  <el-tag :type="type" :round="round">{{ text }}</el-tag>
+  <el-tag :round="round">{{ text }}</el-tag>
 </template>

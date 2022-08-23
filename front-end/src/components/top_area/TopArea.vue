@@ -12,7 +12,7 @@ const radioDevice = ref("pc");
 const appStore = useAppStore();
 
 async function generate() {
-    await axios.get("/api/download", {params: {id: appStore.id}})
+    await axios.get("download", {params: {id: appStore.id}})
 }
 </script>
 

@@ -19,7 +19,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <el-menu class="left-area-menu" :collapse="true" @select="selectIndex">
+  <el-menu class="left-area-menu" :collapse="true">
     <div class="left-area-top">
       <el-menu-item index="1">
         <el-icon>

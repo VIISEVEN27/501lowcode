@@ -50,7 +50,7 @@ export default defineComponent({
     const router = useRouter()
     const id = route.params.id as string
     if (!id) {
-      axios.get("/api/new").then((resp) => {
+      axios.get("new").then((resp) => {
         const newId = resp.data.id as string
         router.push("/" + newId)
       })
@@ -328,7 +328,7 @@ export default defineComponent({
       //每次page更新，则保存原来的page数据
       console.log("change"+newValue);
       addReco(newValue);
-      axios.post("/api/save", newValue).then((resp) => {
+      axios.post("save", newValue).then((resp) => {
         console.log(resp.data.msg)
       })
     }, 2000)

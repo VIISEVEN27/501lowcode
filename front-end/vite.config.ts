@@ -8,10 +8,11 @@ import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import IconsResolver from "unplugin-icons/resolver";
-import monacoEditorPlugin from 'vite-plugin-monaco-editor';
+import monacoEditorPlugin from "vite-plugin-monaco-editor";
 
 // https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig(({ command }) => ({
+  base: command === "build" ? "/" : "/",
   server: {
     proxy: {
       "/api": {
@@ -51,7 +52,7 @@ export default defineConfig({
       resolvers: [ElementPlusResolver(), IconsResolver()],
     }),
     monacoEditorPlugin.default({
-      languageWorkers: ['editorWorkerService', 'typescript'],
+      languageWorkers: ["editorWorkerService", "typescript"],
     }),
   ],
   resolve: {
@@ -59,4 +60,4 @@ export default defineConfig({
       "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
   },
-});
+}));

@@ -20,6 +20,10 @@ import CustomComponents from "./components/custom_components";
 
 import "./assets/base.css";
 
+import axios from "axios";
+
+axios.defaults.baseURL = "http://139.224.220.27:3000/";
+
 const app = createApp(App);
 app.use(router);
 app.use(createPinia());
