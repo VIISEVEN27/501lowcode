@@ -34,13 +34,6 @@ export class VPage extends VComponent{
     this.title = "未命名页面"
     this.time = new Date()
   }
-
-  async init() {
-    const resp = await axios.get("/api/page", {params: {id: this.id}})
-    const {title, time} = resp.data
-    this.title = title
-    this.time = time
-  }
 }
 
 export default defineComponent({
@@ -324,25 +317,32 @@ export default defineComponent({
           );
     }
 
-    const debounced = useDebounceFn((newValue: VPage, oldValue: VPage) => {
-      //每次page更新，则保存原来的page数据
-      console.log("change"+newValue);
-      addReco(newValue);
-      axios.post("/api/save", newValue).then((resp) => {
+    async function initPage(id: string) {
+      const resp = await axios.get("/api/page", {params: {id}})
+      appStore.page = resp.data
+    }
+
+    const debouncedSave = useDebounceFn((newPage: VPage) => {
+      axios.post("/api/save", newPage).then((resp) => {
         console.log(resp.data.msg)
       })
     }, 2000)
 
     let stop: WatchStopHandle
-    watch(pageId, (newValue, oldValue) => {
-      if (newValue !== oldValue) {
-        appStore.page.id = newValue
-        appStore.page.init().then(() => {
+    watch(pageId, (newId, oldId) => {
+      if (newId !== oldId) {
+        initPage(newId).then(() => {
           /**
            * 使用watch函数监听响应式对象page的变化
            */
+          console.log("init: " + JSON.stringify(page.value))
           stop?.call(this)
-          stop = watch(page, debounced, { deep: true })
+          stop = watch(page, (newPage) => {
+            console.log("changed: " + JSON.stringify(newId))
+            //每次page更新，则保存原来的page数据
+            addReco(newId);
+            debouncedSave(newPage)
+          }, { deep: true })
         })
       }
     })
