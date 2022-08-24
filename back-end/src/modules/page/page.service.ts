@@ -6,6 +6,7 @@ import {MongoDB} from "../../db/mongo.db"
 import {IComponent, IPage} from "./page.entity"
 import * as fs from "fs"
 import * as JSZip from "jszip"
+import {capitalize} from "lodash-es"
 
 @Injectable()
 export class PageService {
@@ -62,11 +63,10 @@ export class PageService {
     }
 }
 
-function parseFunction(func: string) {
-    const leftBracketIndex = func.indexOf("(")
-    const name = func.slice(9, leftBracketIndex).trim()
-    const body = func.slice(leftBracketIndex).trim()
-    return {name, body}
+function parseFunctionBody(funcString: string): string {
+    const leftBracket = funcString.indexOf("{")
+    const rightBracket = funcString.lastIndexOf("}")
+    return funcString.slice(leftBracket + 1, rightBracket - 1).trim()
 }
 
 function stringifyObject(obj: any) {
@@ -83,10 +83,10 @@ function generateDeep(page: IPage) {
             .join(" ")
         const style = stringifyObject(component.styles)
         const events = Object.entries(component.events)
-            .map(([event, func]) => {
-                const {name, body} = parseFunction(func)
-                const newName = `${name}_${component.name}`
-                functions.push(`function ${newName}${body}`)
+            .map(([event, handler]) => {
+                const body = parseFunctionBody(handler)
+                const newName = `handle${capitalize(component.name)}${capitalize(event)}`
+                functions.push(`function ${newName}{\n\t${body}\n}`)
                 return `@${event}="${newName}"`
             })
             .join(" ")

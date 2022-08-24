@@ -1,6 +1,6 @@
 import {readFileSync} from "fs"
 import * as yaml from "js-yaml"
-import * as lodash from "lodash"
+import {get as _get} from "lodash-es"
 import {resolve} from "path"
 
 const FILENAME = "application.yml"
@@ -11,6 +11,6 @@ export class ConfigUtil {
     )
 
     static get(propertyPath: string) {
-        return lodash.get(this.options, propertyPath)
+        return _get(this.options, propertyPath)
     }
 }
