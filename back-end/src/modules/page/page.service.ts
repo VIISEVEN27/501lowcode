@@ -86,7 +86,7 @@ function generateDeep(page: IPage) {
             .map(([event, handler]) => {
                 const body = parseFunctionBody(handler)
                 const newName = `handle${lodash.capitalize(component.name)}${lodash.capitalize(event)}`
-                functions.push(`function ${newName}{\n\t${body}\n}`)
+                functions.push(`function ${newName}(event) {\n\t${body}\n}`)
                 return `@${event}="${newName}"`
             })
             .join(" ")

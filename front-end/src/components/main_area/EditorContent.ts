@@ -1,5 +1,6 @@
 import componentInfo from "@/assets/component_info"
 import {addReco} from "@/components/top_area/UndoLogic"
+import {getFuncBody} from "@/scripts/utils"
 import {useAppStore} from "@/stores/app"
 import {useDebounceFn} from "@vueuse/core"
 import axios from "axios"
@@ -317,16 +318,50 @@ export default defineComponent({
           );
     }
 
+    type ComponentDataType<T extends VComponent = VComponent> =
+        Omit<T, "events" | "children">
+        & { events: Record<string, string> | undefined, children: ComponentDataType<VComponent>[] | undefined }
+
     async function initPage(id: string) {
-      const resp = await axios.get("/api/page", {params: {id}})
-      appStore.page = resp.data
+      function initComponent<T extends VComponent>(data: ComponentDataType<T>): T {
+        const {events} = data
+        const _events: Record<string, Function> = {}
+        if (events) {
+          Object.entries(events).forEach(([event, handler]) => {
+            _events[event] = new Function("event", getFuncBody(handler))
+          })
+        }
+        return {
+          ...data,
+          events: _events,
+          children: data.children?.map((child) => initComponent(child)),
+        } as T
+      }
+
+      const resp = await axios.get<ComponentDataType<VPage>>("/api/page", {params: {id}})
+      appStore.page = initComponent(resp.data)
     }
 
+    function jsonifyPage(component: VComponent): ComponentDataType  {
+      const events: Record<string, string> = {}
+      if (component.events) {
+        Object.entries(component.events).forEach(([event, handler]) => {
+          events[event] = handler.toString()
+        })
+      }
+      return {
+        ...component,
+        events,
+        children: component.children?.map((child) => jsonifyPage(child))
+      }
+    }
+
+
     const debouncedSave = useDebounceFn((newPage: VPage) => {
-      axios.post("/api/save", newPage).then((resp) => {
+      axios.post("/api/save", jsonifyPage(newPage)).then((resp) => {
         console.log(resp.data.msg)
       })
-    }, 2000)
+    }, 1000)
 
     let stop: WatchStopHandle
     watch(pageId, (newId, oldId) => {
@@ -335,10 +370,10 @@ export default defineComponent({
           /**
            * 使用watch函数监听响应式对象page的变化
            */
-          console.log("init: " + JSON.stringify(page.value))
+          console.log("init: " + page.value)
           stop?.call(this)
           stop = watch(page, (newPage) => {
-            console.log("changed: " + JSON.stringify(newId))
+            console.log("changed: " + newId)
             //每次page更新，则保存原来的page数据
             addReco(newId);
             debouncedSave(newPage)
