@@ -6,7 +6,7 @@ import {MongoDB} from "../../db/mongo.db"
 import {IComponent, IPage} from "./page.entity"
 import * as fs from "fs"
 import * as JSZip from "jszip"
-import {capitalize} from "lodash-es"
+import * as lodash from "lodash"
 
 @Injectable()
 export class PageService {
@@ -85,7 +85,7 @@ function generateDeep(page: IPage) {
         const events = Object.entries(component.events)
             .map(([event, handler]) => {
                 const body = parseFunctionBody(handler)
-                const newName = `handle${capitalize(component.name)}${capitalize(event)}`
+                const newName = `handle${lodash.capitalize(component.name)}${lodash.capitalize(event)}`
                 functions.push(`function ${newName}{\n\t${body}\n}`)
                 return `@${event}="${newName}"`
             })
