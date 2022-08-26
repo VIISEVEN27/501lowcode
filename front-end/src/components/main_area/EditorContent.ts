@@ -40,17 +40,19 @@ export class VPage extends VComponent{
 export default defineComponent({
   name: "EditorContent",
   setup() {
+    const appStore = useAppStore()
+    const {id: pageId, page} = storeToRefs(appStore)
+
     const route = useRoute()
     const router = useRouter()
     const id = route.params.id as string
     if (!id) {
-      axios.get("/api/new").then((resp) => {
+      axios.get("/api/new").then(async (resp) => {
         const newId = resp.data.id as string
-        router.push("/" + newId)
+        await router.push("/" + newId)
+        appStore.id = newId
       })
     }
-    const appStore = useAppStore()
-    const {id: pageId, page} = storeToRefs(appStore)
 
     function generateNameCache(vcomponent: VComponent): Set<string> {
       if (!vcomponent.children) {
